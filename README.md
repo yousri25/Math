@@ -6,4 +6,4 @@ Site de révision en une seule page (Algèbre I et Analyse I).
 
 **Utilisation :** ouvrir `index.html` dans un navigateur. Aucune installation. Bouton « Thème » pour le mode clair/sombre.
 
-**Lien :** `https://yousri25.github.io/Math`
+**Lien :** https://yousri25.github.io/Math
