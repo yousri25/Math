@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Révision Maths – Algèbre I & Analyse I</title><link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'><text y='9' font-size='9'>📐</text></svg>">
+<style>
+:root{--bg:#f6f7fb;--c:#fff;--t:#1d2433;--m:#5d667a;--a:#4f46e5;--a2:#e0e7ff;--b:#e3e6ef;--ok:#16a34a;--ko:#dc2626;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0f1220;--c:#181c2e;--t:#e8eaf3;--m:#9aa3ba;--a:#818cf8;--a2:#262b4a;--b:#2a3050}}
+:root[data-theme=dark]{--bg:#0f1220;--c:#181c2e;--t:#e8eaf3;--m:#9aa3ba;--a:#818cf8;--a2:#262b4a;--b:#2a3050}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--t);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index9;z-index:9;background:var(--c);border-bottom:1px solid var(--b);display:flex;gap:4px;padding:8px 12px;overflow-x:auto;align-items:center}
+nav a{white-space:nowrap;color:var(--m);text-decoration:none;padding:6px 10px;border-radius:8px;font-size:14px}nav a:hover{background:var(--a2);color:var(--a)}
+nav button{margin-left:auto;border:1px solid var(--b);background:var(--bg);color:var(--t);border-radius:8px;padding:6px 10px;cursor:pointer}
+main{max-width:920px;margin:auto;padding:24px 16px 60px}
+h1{font-size:clamp(28px,5vw,42px);margin:20px 0 8px;line-height:1.15}h1 span{color:var(--a)}
+h2{margin:48px 0 8px;font-size:26px}h2 b{background:var(--a);color:#fff;border-radius:8px;padding:0 10px;margin-right:8px}
+h3{margin:26px 0 8px;font-size:18px;color:var(--a)}p{margin:8px 0}.sub{color:var(--m)}
+.card,.def{background:var(--c);border:1px solid var(--b);border-radius:12px;padding:12px 16px;margin:10px 0}
+.def{border-left:4px solid var(--a)}.def>b:first-child{display:block;color:var(--a)}
+.warn{border-left-color:var(--ko)}.warn>b:first-child{color:var(--ko)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px}.grid .card{margin:0}
+table{border-collapse:collapse;width:100%;background:var(--c);border-radius:10px;overflow:hidden;font-size:15px}th,td{border:1px solid var(--b);padding:7px 10px;text-align:left}th{background:var(--a2);color:var(--a)}
+.w{overflow-x:auto;margin:10px 0}.c td,.c th{text-align:center}
+code,.f{font-family:ui-monospace,Consolas,monospace;background:var(--a2);padding:1px 6px;border-radius:5px}
+.f{display:block;padding:8px 12px;margin:6px 0;overflow-x:auto}
+figure{margin:14px 0;background:var(--c);border:1px solid var(--b);border-radius:12px;padding:10px;text-align:center}figcaption{color:var(--m);font-size:14px}svg{max-width:100%;height:auto}
+svg text{fill:var(--t);font:13px system-ui}.ax{stroke:var(--m)}.pa{stroke:var(--a);fill:none;stroke-width:2.2}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}.flow div{background:var(--a2);color:var(--a);padding:8px 14px;border-radius:10px;font-weight:600}
+details{background:var(--c);border:1px solid var(--b);border-radius:10px;padding:10px 14px;margin:8px 0}summary{cursor:pointer;font-weight:600}
+.q button{display:block;width:100%;text-align:left;margin:6px 0;padding:10px;border:1px solid var(--b);background:var(--bg);color:var(--t);border-radius:8px;cursor:pointer;font:inherit}
+.q button.ok{background:var(--ok);color:#fff}.q button.ko{background:var(--ko);color:#fff}
+.tag{display:inline-block;background:var(--a2);color:var(--a);border-radius:20px;padding:2px 10px;font-size:13px;margin:2px}
+</style></head><body>
+<nav><a href="#log">Logique</a><a href="#rais">Raisonnements</a><a href="#ev">Esp. vectoriels</a><a href="#dim">Bases</a><a href="#cx">Complexes</a><a href="#fu">Fonctions</a><a href="#tr">Formules</a><a href="#quiz">Quiz</a><button id="th">🌓 Thème</button></nav>
+<main>
+<h1>Maths : <span>révision complète</span></h1>
+<p class="sub">Algèbre I (logique, espaces vectoriels) et Analyse I (complexes, fonctions usuelles, annexes) : tout le cours au même endroit, avec schémas, exemples et quiz.</p>
+<p><span class="tag">Algèbre I · Ch.1–2</span><span class="tag">Analyse I · Ch.1–2</span><span class="tag">Annexes 1–2</span></p>
+
+<h2 id="log"><b>1</b>Logique</h2>
+<div class="def"><b>Proposition (assertion, énoncé)</b>Phrase soit vraie, soit fausse, mais pas les deux en même temps. Ex : P1 : 2 + 2 = 4 (vraie) ; P2 : 2 ∗ 3 = 7 (fausse) ; P3 : pour tout réel x, x² ≥ 0 (vraie) ; P4 : pour tout z complexe, |z| = 1 (fausse).</div>
+<div class="def"><b>Négation</b>Non P est vraie si P est fausse ; Non P est fausse si P est vraie. Ex : Non P3 : il existe un réel x tel que x² &lt; 0 (fausse) ; Non P4 : il existe z complexe tel que |z| ≠ 1 (vraie).</div>
+<div class="grid">
+<div class="card"><b>« P et Q »</b><br>Vraie si P et Q sont toutes les deux vraies. Fausse sinon.</div>
+<div class="card"><b>« P ou Q »</b><br>Vraie si l'une des deux est vraie. Fausse si P et Q sont toutes les deux fausses.</div>
+<div class="card"><b>Implication « P ⇒ Q »</b><br>Définie par « Non P ou Q ». Se lit « P implique Q » ou « si P alors Q ». Si elle est vraie : P est une condition suffisante pour avoir Q, et Q est une condition nécessaire pour avoir P.</div>
+<div class="card"><b>Équivalence « P ⇔ Q »</b><br>« P ⇒ Q » et « Q ⇒ P ». Se lit « P si et seulement si Q » : conditions nécessaires et suffisantes.</div></div>
+<h3>Table de vérité</h3>
+<div class="w"><table class="c"><tr><th>P</th><th>Q</th><th>Non P</th><th>P et Q</th><th>P ou Q</th><th>P ⇒ Q</th><th>P ⇔ Q</th></tr>
+<tr><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>V</td><td>V</td></tr><tr><td>V</td><td>F</td><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td></tr><tr><td>F</td><td>V</td><td>V</td><td>F</td><td>V</td><td>V</td><td>F</td></tr><tr><td>F</td><td>F</td><td>V</td><td>F</td><td>F</td><td>V</td><td>V</td></tr></table></div>
+<div class="def"><b>Principe de déduction</b>Si P et « P ⇒ Q » sont vraies, alors Q est vraie.</div>
+<h3>Contraposée</h3>
+<div class="def"><b>Théorème</b>Contraposée de « P ⇒ Q » : « Non Q ⇒ Non P ». Elles sont équivalentes : (P ⇒ Q) ⇔ (Non Q ⇒ Non P).</div>
+<h3>Proposition 2.9 : règles de calcul</h3>
+<div class="card">1. Non(Non P) ⇔ P<br>2. Non(P et Q) ⇔ (Non P) ou (Non Q)<br>3. Non(P ou Q) ⇔ (Non P) et (Non Q)<br>4. Non(P ⇒ Q) ⇔ P et (Non Q)<br>5. P et (Q ou R) ⇔ (P et Q) ou (P et R)<br>6. P ou (Q et R) ⇔ (P ou Q) et (P ou R)</div>
+<h3>Quantificateurs</h3>
+<p class="sub">P(x) : propriété dépendant de x, élément d'un ensemble E.</p>
+<div class="grid"><div class="card"><b>Universel ∀</b> « quel que soit »<br>∀ x ∈ E, P(x) : P(x) vraie pour tous les x de E.</div><div class="card"><b>Existentiel ∃</b> « il existe »<br>∃ x ∈ E, P(x) : vraie pour au moins un x. ∃! : il existe un unique x dans E.</div></div>
+<p>Exemples : ∀ n ∈ ℕ, n(n + 1) est divisible par 2. ∃ x ∈ ℝ : x(x − 1) &lt; 0.</p>
+<div class="def"><b>Négation (proposition 3.2)</b>1. Non « ∀ x ∈ E, P(x) » est « ∃ x ∈ E, Non P(x) ».<br>2. Non « ∃ x ∈ E, P(x) » est « ∀ x ∈ E, Non P(x) ».</div>
+<div class="def warn"><b>Remarque : l'ordre des quantificateurs est très important</b>On ne peut pas les intervertir sans changer (en général) le sens.<br>1. a) ∀ x ∈ ℝ, ∃ y ∈ ℝ : x + y &gt; 0 : Vraie. b) ∃ x ∈ ℝ, ∀ y ∈ ℝ : x + y &gt; 0 : Fausse.<br>2. a) ∃ x ∈ ℝ⁺, ∀ y ∈ ℝ⁻ : −x.y ≥ 0 : Vraie. b) ∀ x ∈ ℝ⁺, ∃ y ∈ ℝ⁻ : −x.y ≥ 0 : Vraie.</div>
+
+<h2 id="rais"><b>2</b>Raisonnements</h2>
+<div class="grid">
+<div class="card"><b>4.1 Direct</b><br>Pour « P ⇒ Q » : on suppose P vraie et on montre qu'alors Q est vraie. Ex : si a, b ∈ ℚ, alors a + b ∈ ℚ.</div>
+<div class="card"><b>4.2 Cas par cas (disjonction)</b><br>Pour montrer P(x) ∀ x ∈ E : on le montre pour les x d'une partie A de E, puis pour le complémentaire de A (noté cA, Aᶜ ou ∁A). Ex : ∀ x ∈ ℝ, |x − 1| ≤ x² − x + 1 ; cas x ≥ 1 et x &lt; 1.</div>
+<div class="card"><b>4.3 Contraposée</b><br>Montrer « P ⇒ Q » équivaut à montrer « Non Q ⇒ Non P ». Ex : n ∈ ℕ, si n² est paire alors n est paire.</div>
+<div class="card"><b>4.4 Absurde</b><br>Pour « P ⇒ Q » : on suppose à la fois P vraie et Q fausse, et on cherche une contradiction. Ex : a, b ≥ 0, si a/(1 + b) = b/(1 + a) alors a = b.</div>
+<div class="card"><b>4.5 Contre-exemple</b><br>Pour montrer « ∀ x ∈ E, P(x) » il faut le montrer pour chaque x ; pour la montrer fausse, il suffit de trouver x ∈ E tel que P(x) soit fausse. Ex : « tout entier positif est la somme de trois carrés d'entiers » est fausse.</div></div>
+<div class="def warn"><b>Remarque</b>Contraposition ou absurde : au choix, mais bien préciser le type de raisonnement et ne pas en changer en cours de rédaction.</div>
+<h3>4.6 Récurrence</h3>
+<p>Permet de montrer qu'une propriété P(n) est vraie pour tout n ∈ ℕ.</p>
+<div class="flow"><div>1. Initialisation : P(0) vraie</div>→<div>2. Hérédité : n ≥ 0 donné avec P(n) vraie, montrer P(n + 1)</div>→<div>3. Conclusion : par le principe de récurrence, P(n) vraie ∀ n ∈ ℕ</div></div>
+<div class="card"><b>Remarque 1</b> : pour une propriété vraie pour tout n ≥ n₀ (n₀ ≥ 1), l'initialisation commence au rang n₀.<br><b>Récurrence double</b> : initialisation, P(0) et P(1) vraies ; hérédité, on suppose P(n) et P(n + 1) vraies et on montre P(n + 2).<br><b>Récurrence forte</b> : initialisation, P(0) vraie ; hérédité, on suppose P(1), P(2), …, P(n) vraies et on montre P(n + 1).<br><b>Exemples</b> : ∀ n ∈ ℕ : 2ⁿ &gt; n. Suite (Uₙ)ₙ : U₀ = 0, U₁ = 1, ∀ n ∈ ℕ : Uₙ₊₂ = 2Uₙ₊₁ − Uₙ ; montrer que Uₙ = n.</div>
+
+<h2 id="ev"><b>3</b>Espaces vectoriels</h2>
+<p class="sub">Dans toute la suite K désigne ℝ ou ℂ. E est muni d'une loi de composition interne notée (+) et d'une loi de composition externe notée (.), de K × E dans E.</p>
+<div class="def"><b>Définition : K-espace vectoriel (K-ev)</b>1. (E, +) est un groupe abélien :<br>i) ∀ x, y, z ∈ E, (x + y) + z = x + (y + z) (associativité)<br>ii) ∀ x, y ∈ E, x + y = y + x (commutativité)<br>iii) ∃ e ∈ E, ∀ x ∈ E : x + e = e + x = x<br>iv) ∀ x ∈ E, ∃ x′ ∈ E : x + x′ = x′ + x = e<br>2. ∀ x, y ∈ E, ∀ λ, µ ∈ K :<br>a) λ.(x + y) = λ.x + λ.y<br>b) (λ + µ).x = λ.x + µ.x<br>c) λ.(µ.x) = (λµ).x<br>d) 1.x = x, où 1 est l'élément neutre pour la multiplication dans K.</div>
+<div class="card"><b>Remarques</b> : les éléments de K sont les scalaires, ceux de E les vecteurs. L'élément neutre est noté 0<sub>E</sub> (vecteur nul). Le symétrique de x est noté −x.<br><b>Exemples</b> : (ℝ, +, ×) est un ℝ-ev ; (ℝ², +, ×) est un ℝ-ev ; (ℂ, +, ×) est un ℝ-ev.</div>
+<h3>Sous-espace vectoriel</h3>
+<div class="def"><b>Définition</b>E un K-ev, F sous-ensemble non vide de E. F est un sous-espace vectoriel sur K de E si (F, +, ×) est lui-même un K-espace vectoriel. Ex : {0<sub>E</sub>} est un sous-espace vectoriel de E.</div>
+<div class="def"><b>Théorème 1.2.2</b>F ⊂ E est un sous-espace vectoriel de E si et seulement si<br>i) 0<sub>E</sub> ∈ F<br>ii) ∀ X, Y ∈ F, X + Y ∈ F<br>iii) ∀ X ∈ F, ∀ α ∈ K : α × X ∈ F</div>
+<p>Exemples : F = {(x, y) ∈ ℝ² : x = 0} = {0} × ℝ est un sous-espace vectoriel de ℝ². F = {(x, y) ∈ ℝ² : x − y = 0} aussi. H = {(x, 2x + 1) ∈ ℝ²} n'en est pas un (0 ∉ H).</p>
+
+<h2 id="dim"><b>4</b>Dimension d'un espace vectoriel</h2>
+<div class="def"><b>Combinaison linéaire</b>Soit {x₁, …, xₙ} famille finie de n vecteurs de E. Une combinaison linéaire est tout vecteur x = Σᵢ₌₁ⁿ αᵢ.xᵢ, où α₁, …, αₙ ∈ K sont les coefficients. Ex : A = (1,0,0), B = (0,1,0), C = (2,−3,0) : C = 2A − 3B.<br><b>Proposition</b> : F = {x ∈ E : x = Σ αᵢ.xᵢ ; α₁, …, αₙ ∈ K} est un sous-espace vectoriel de E.</div>
+<div class="def"><b>Famille génératrice</b>Les vecteurs x₁, …, xₙ forment un système de générateurs (famille génératrice) de E si tout vecteur de E est combinaison linéaire des xᵢ. On note E = &lt; x₁, …, xₙ &gt;. Ex : {e₁ = (1,0), e₂ = (0,1)} engendre ℝ².<br><b>Dimension finie</b> : E est de dimension finie s'il existe dans E une famille génératrice finie.</div>
+<div class="def"><b>Famille libre</b>{x₁, …, xₙ} est libre (x₁, …, xₙ linéairement indépendants) si, pour tous α₁, …, αₙ ∈ K : si α₁.x₁ + … + αₙ.xₙ = 0<sub>E</sub> alors α₁ = … = αₙ = 0. Sinon elle est liée.<br>Ex : {(1,1,0), (0,1,1)} libre dans ℝ³ ; {(1,0,0), (0,1,0), (1,1,0)} liée.</div>
+<div class="def"><b>Base</b>Famille {e₁, …, eₙ} à la fois libre et génératrice de E. Bases canoniques : {(1,0), (0,1)} de ℝ² ; {(1,0,0), (0,1,0), (0,0,1)} de ℝ³.<br><b>Théorème 2.4.2</b> : tout vecteur x ∈ E s'écrit de manière unique x = Σ λᵢ.eᵢ ; les λ₁, …, λₙ sont les coordonnées (composantes) de x.</div>
+<div class="def"><b>Propriétés 2.4.3</b>1. Tout espace vectoriel de dimension finie possède au moins une base.<br>2. Toutes les bases ont le même nombre de vecteurs : la dimension de E, notée dim E.<br>3. E de dimension finie n :<br>• toute famille libre à n vecteurs est une base de E ;<br>• toute famille génératrice à n vecteurs est une base de E ;<br>• toute famille libre contient au plus n vecteurs ;<br>• toute famille génératrice contient au moins n vecteurs.<br>4. F sous-espace vectoriel de E (dim finie n) : F est de dimension finie, avec dim F ≤ dim E.<br><b>Remarque 2.4.4</b> : par convention dim{0<sub>E</sub>} = 0.</div>
+<div class="card"><b>Exercices du cours</b> : F = {3x − 2y = 0} de ℝ² ; G = {x − 3y + z = 0} de ℝ³ ; F = {2x + 3y + 5z = 0} (dimension de F) ; (0,1,1), (1,0,1), (1,1,0) base de ℝ³ ; {(1,0,0), (0,1,0)} libre non génératrice ; {(1,0,0), (0,1,0), (0,0,1), (1,1,1)} génératrice non libre.</div>
+
+<h2 id="cx"><b>5</b>Les nombres complexes</h2>
+<div class="def"><b>Définition-Théorème</b>ℂ est l'ensemble contenant ℝ tel que : ℂ contient un élément i vérifiant i² = −1 ; tout z ∈ ℂ s'écrit de manière unique z = x + iy, x et y réels ; ℂ est muni d'une addition et d'une multiplication de règles analogues à celles de ℝ.<br><b>Remarque</b> : pas de relation d'ordre (≤) sur ℂ. Si z = x + iy et z′ = x′ + iy′ : z = z′ si et seulement si x = x′ et y = y′.</div>
+<div class="def"><b>Conjugué</b>z = x + iy, le conjugué z̄ = x − iy. <b>Forme algébrique</b> z = x + iy ; x = Re(z), y = Im(z).</div>
+<div class="card"><b>2.2 Propriétés du conjugué</b> (∀ z, z′ ∈ ℂ)<br>1. conj(z̄) = z<br>2. conj(z + z′) = z̄ + z̄′<br>3. conj(z.z′) = z̄.z̄′<br>4. Si z′ ≠ 0 : conj(1/z′) = 1/z̄′ ; conj(z/z′) = z̄/z̄′<br>5. z̄ = z ⇔ z ∈ ℝ ; z̄ = −z ⇔ z ∈ iℝ</div>
+<div class="card"><b>2.4 Parties réelle et imaginaire</b> (∀ z, z′ ∈ ℂ, λ ∈ ℝ)<br>1. Re(z) = (z + z̄)/2 ; Im(z) = (z − z̄)/2i<br>2. Re(z + z′) = Re(z) + Re(z′) ; Im(z + z′) = Im(z) + Im(z′)<br>3. Re(λ.z) = λ.Re(z) ; Im(λ.z) = λ.Im(z)<br><b>Exercice</b> : résoudre 2z + 6z̄ = 3 + 2i.</div>
+<div class="card"><b>3 Module</b> : |z| = √(x² + y²). <b>Propriétés</b> (∀ z, z′ ∈ ℂ)<br>1. |z| ≥ 0 &nbsp; 2. |z| = 0 ⇔ z = 0<br>3. |z|² = z.z̄. En particulier si |z| = 1 alors z̄ = 1/z ; si z ∈ ℂ* alors 1/z = z̄/|z|²<br>4. |z̄| = |z| &nbsp; 5. |z.z′| = |z|.|z′| &nbsp; 6. |z/z′| = |z|/|z′| &nbsp; 7. |z + z′| ≤ |z| + |z′|<br><b>Exercice</b> : |z| ≤ k &lt; 1, montrer 1 − k ≤ |1 + z| ≤ 1 + k.</div>
+<div class="def"><b>4 Argument</b>Plan P muni d'un repère orthonormé direct (O, u, v). z ≠ 0 de forme algébrique x + iy, M(x, y) : un argument de z est une mesure en radian de l'angle (u, OM). On note θ = arg(z).<br>Remarques : θ n'est pas unique, défini modulo 2π ; l'argument de 0 n'existe pas.</div>
+<div class="card"><b>4.2 Propriétés</b> (∀ z, z′ ∈ ℂ*)<br>1. arg(z.z′) = arg(z) + arg(z′) [2π]. En particulier ∀ n ∈ ℕ, arg(zⁿ) = n.arg(z) [2π]<br>2. arg(1/z) = arg(z̄) = −arg(z) [2π]<br>3. arg(z/z′) = arg(z) − arg(z′) [2π]<br>4. arg(−z) = arg(z) + π [2π]<br>5. arg(z) = 0 [2π] ⇔ z ∈ ℝ*₊ ; arg(z) = 0 [π] ⇔ z ∈ ℝ* ; arg(z) = π/2 [π] ⇔ z ∈ iℝ*<br>6. |z + z′| = |z| + |z′| ⇔ arg(z) = arg(z′) [2π]</div>
+<div class="def"><b>5.1 Formule d'Euler</b>∀ θ ∈ ℝ : e^{iθ} = cos(θ) + i sin(θ).<br><b>Propriétés</b> (∀ θ, θ′ ∈ ℝ)<br>1. e^{i(θ+θ′)} = e^{iθ}.e^{iθ′}<br>2. 1/e^{iθ} = e^{−iθ}<br>3. ∀ n ∈ ℤ, (e^{iθ})ⁿ = e^{inθ}<br>4. e^{iθ}/e^{iθ′} = e^{i(θ−θ′)}<br>5. conj(e^{iθ}) = e^{−iθ}<br>6. e^{iθ} = 1 ⇔ θ ∈ 2πℤ</div>
+<div class="def"><b>Notation</b>z ∈ ℂ*, module r, argument θ : z = r(cos(θ) + i sin(θ)) est la forme géométrique ; z = re^{iθ} est la forme exponentielle.</div>
+<div class="def"><b>5.2 Racines n-ièmes</b>n ∈ ℕ*, z ∈ ℂ* avec r = |z|, ϕ = arg(z) [2π] ; Z ∈ ℂ* avec R = |Z|, φ = arg(Z) [2π]. Z = zⁿ si et seulement si R = rⁿ et φ = nϕ [2π], c'est-à-dire r = R^{1/n} et ϕ = φ/n [2π/n].<br>Z admet n racines n-ièmes : <span class="f">R^{1/n}.e^{i(φ/n + 2kπ/n)} ; k ∈ {0, 1, …, n − 1}</span></div>
+<div class="card"><b>Applications</b> : mettre sous forme exponentielle 1 + cos(θ) + i sin(θ) et ((1 + i√3)/(1 − i))²⁰ ; z′ = (z̄ − 1)/(1 − z) : |z′| = 1, (z′ − 1)/(z − 1) ∈ ℝ, (z′ + 1)/(z − 1) ∈ iℝ ; résoudre z² + z + 1 = 0, z² + (5 − 2i)z + 5 − 5i = 0, z⁴ − 3iz² + 4 = 0, et la somme ((z+i)/(z−i))³ + … + 1 = 0 ; racines cubiques de 1 + i√3.</div>
+
+<h2 id="fu"><b>6</b>Fonctions usuelles</h2>
+<div class="def"><b>1 Logarithme népérien</b>ln : l'unique primitive sur ℝ*₊ qui s'annule en 1 de x → 1/x. Infiniment dérivable, strictement croissante, et pour tout x &gt; −1 : ln(1 + x) ≤ x.<br><b>Propriétés</b> (a, b &gt; 0) : 1. ln(a.b) = ln(a) + ln(b) &nbsp; 2. ln(1/a) = −ln(a) &nbsp; 3. ln(a/b) = ln(a) − ln(b) &nbsp; 4. ln(aʳ) = r ln(a), r ∈ ℚ<br><b>Limites</b> : lim_{x→+∞} ln(x) = +∞ ; lim_{x→0+} ln(x) = −∞ ; lim_{x→+∞} ln(x)/x = 0 ; lim_{x→0+} x ln(x) = 0 ; lim_{x→1} ln(x)/(x − 1) = 1 ; lim_{x→0} ln(1 + x)/x = 1.</div>
+<div class="def"><b>2 Exponentielle</b>Nombre de Neper e : ln(e) = 1. exp est la réciproque de ln : y = exp(x) ⇔ x = ln(y) (x ∈ ℝ, y &gt; 0). Infiniment dérivable, strictement croissante, (exp)′(x) = exp(x), exp(x) ≥ x + 1.<br>Remarques : ln(exp(x)) = x ; exp(ln(x)) = x (x &gt; 0) ; exp(0) = 1 ; exp(1) = e.<br><b>Propriétés</b> : 1. exp(x + y) = exp(x).exp(y) &nbsp; 2. exp(−x) = 1/exp(x) &nbsp; 3. exp(x − y) = exp(x)/exp(y) &nbsp; 4. (exp(x))ʳ = exp(x.r), r ∈ ℚ<br><b>Limites</b> : lim_{x→+∞} exp(x) = +∞ ; lim_{x→−∞} exp(x) = 0 ; lim_{x→+∞} exp(x)/x = +∞ ; lim_{x→−∞} x.exp(x) = 0 ; lim_{x→0} (exp(x) − 1)/x = 1.</div>
+<div class="def"><b>3 Fonctions puissances</b>α ∈ ℝ : P_α(x) = xᵅ = exp(α ln(x)), de ℝ*₊ dans ℝ. Pour α &gt; 0, P_α(0) = 0 la rend continue sur [0, +∞[ ; P₀ se prolonge par P₀(0) = 1.<br>Propriétés : infiniment dérivable sur ℝ*₊, P′_α(x) = α.xᵅ⁻¹ ; croissante si α &gt; 0, décroissante si α &lt; 0.<br>Remarques (α &gt; 0) : si α &gt; 1, P_α dérivable, P′_α continue sur ℝ₊, P′_α(0) = 0 ; si 0 &lt; α &lt; 1, P_α dérivable, P′_α continue sur ℝ*₊ avec lim_{x→0} P′_α(x) = +∞.</div>
+<div class="def"><b>4 Comparaisons locales</b>Théorème 4.1 (α, β ∈ ℝ*₊) : lim_{x→+∞} (ln(x))ᵅ/xᵝ = 0 ; lim_{x→0+} xᵅ.|ln(x)|ᵝ = 0.<br>Théorème 4.2 (α &gt; 0, β &gt; 0) : lim_{x→+∞} (exp(x))ᵅ/xᵝ = +∞ ; lim_{x→−∞} |x|ᵅ.exp(β.x) = 0.<br>Proposition 4.3 : ∀ a &gt; 1, α ∈ ℝ*₊ : lim_{x→+∞} aˣ/xᵅ = +∞.</div>
+<div class="def"><b>5.1 Rappel trigonométrie</b>sin et cos infiniment dérivables sur ℝ ; sin′ = cos, cos′ = −sin. sinus impaire, cosinus paire, 2π-périodiques. cos²(x) + sin²(x) = 1.<br>tg(x) = sin(x)/cos(x) sur ℝ∖{π/2 + π.ℤ} ; tg′(x) = 1/cos²(x) = 1 + tg²(x) ; impaire, π-périodique.<br>cotg(x) = cos(x)/sin(x) sur ℝ∖{π.ℤ} ; cotg′(x) = −1/sin²(x) = −1 − cotg²(x) ; impaire, π-périodique.</div>
+<div class="def"><b>6.1 Arcsinus</b>sin : [−π/2, π/2] → [−1, 1] continue, strictement croissante. arcsin(x) = y ⇔ x = sin(y), x ∈ [−1, 1], y ∈ [−π/2, π/2]. Impaire ; dérivable sur ]−1, 1[ : arcsin′(x) = 1/√(1 − x²).<br>Remarques : sin(arcsin(x)) = x pour x ∈ [−1, 1] ; arcsin(sin(x)) est définie sur ℝ, 2π-périodique, impaire, et = x pour x ∈ [−π/2, π/2].<br>Exercice : résoudre arcsin(sin(x)) = π/9 et sin(arcsin(x)) = π/9 sur ℝ.</div>
+<div class="def"><b>6.2 Arccosinus</b>cos : [0, π] → [−1, 1] continue, strictement décroissante. arccos(x) = y ⇔ x = cos(y), y ∈ [0, π]. Ni paire ni impaire ; dérivable sur ]−1, 1[ : arccos′(x) = −1/√(1 − x²).<br>Remarques : cos(arccos(x)) = x ; arccos(cos(x)) est définie sur ℝ, 2π-périodique, paire, et = x pour x ∈ [0, π].<br>Exercice : ∀ x ∈ [−1, 1], arccos(x) + arcsin(x) = π/2.</div>
+<div class="def"><b>6.3 Arctangente</b>tg : ]−π/2, π/2[ → ℝ continue, strictement croissante. arctg(x) = y ⇔ x = tg(y), y ∈ ]−π/2, π/2[. Impaire ; dérivable sur ℝ : arctg′(x) = 1/(1 + x²).<br>Remarques : tg(arctg(x)) = x ; arctg(tg(x)) définie sur ℝ∖{π/2 + π.ℤ}, π-périodique, impaire, et = x pour x ∈ ]−π/2, π/2[.<br>Exercice : étudier x → arctg(x) + arctg(1/x).</div>
+
+<h2 id="tr"><b>7</b>Annexes : formules</h2>
+<h3>Annexe 1 : formules trigonométriques</h3>
+<div class="card">cos et sin définies sur ℝ, 2π-périodiques ; tan définie sur ℝ∖{π/2 + 2πℤ} et π-périodique (notation du cours : tan).<br><b>Arcs associés</b><br>cos(x + 2π) = cos(x) · cos(−x) = cos(x) · cos(x + π) = −cos(x)<br>sin(x + 2π) = sin(x) · sin(−x) = −sin(x) · sin(x + π) = −sin(x)<br>cos(π − x) = −cos(x) · cos(π/2 − x) = sin(x) · cos(π/2 + x) = −sin(x)<br>sin(π − x) = sin(x) · sin(π/2 − x) = cos(x) · sin(π/2 + x) = cos(x)</div>
+<div class="card"><b>Formules d'addition</b><br>cos(a + b) = cos a cos b − sin a sin b · cos(a − b) = cos a cos b + sin a sin b<br>sin(a + b) = sin a cos b + cos a sin b · sin(a − b) = sin a cos b − cos a sin b<br>tan(a + b) = (tan a + tan b)/(1 − tan a tan b) · tan(a − b) = (tan a − tan b)/(1 + tan a tan b)<br><b>En particulier</b> : cos 2a = cos²a − sin²a = 2cos²a − 1 = 1 − 2sin²a · sin 2a = 2 sin a cos a · tan 2a = 2 tan a/(1 − tan²a)<br><b>Linéarisation</b> : cos²a = (1 + cos 2a)/2 · sin²a = (1 − cos 2a)/2</div>
+<div class="card"><b>Factorisation</b> (formule du cours)<br>cos a cos b = ½(cos(a + b) + cos(a − b)) · sin a sin b = ½(cos(a − b) − cos(a + b)) <i>(le cours écrit cos(a − b) deux fois : coquille)</i> · sin a cos b = ½(sin(a + b) + sin(a − b))<br><b>Ou encore</b><br>cos a + cos b = 2 cos((a + b)/2) cos((a − b)/2) · cos a − cos b = −2 sin((a + b)/2) sin((a − b)/2)<br>sin a + sin b = 2 sin((a + b)/2) cos((a − b)/2) · sin a − sin b = 2 cos((a + b)/2) sin((a − b)/2)</div>
+<h3>Annexe 2 : fonctions hyperboliques</h3>
+<div class="card"><b>Définitions</b> : ch(x) = (eˣ + e⁻ˣ)/2 · sh(x) = (eˣ − e⁻ˣ)/2 · th(x) = sh(x)/ch(x) (x ∈ ℝ) · coth(x) = 1/th(x) = ch(x)/sh(x) (x ∈ ℝ*)<br><b>Identité</b> : ch²(x) − sh²(x) = 1<br><b>Puissance</b> : (ch(x) + sh(x))ⁿ = ch(nx) + sh(nx), x ∈ ℝ, n ∈ ℕ<br><b>Addition</b> : ch(x + y) = ch(x)ch(y) + sh(x)sh(y) · sh(x + y) = sh(x)ch(y) + ch(x)sh(y) · th(x + y) = (th(x) + th(y))/(1 + th(x)th(y))<br><b>En particulier</b> : ch(2x) = ch²(x) + sh²(x) = 2ch²(x) − 1 = 2sh²(x) + 1 · sh(2x) = 2ch(x)sh(x) · th(2x) = 2th(x)/(1 + th²(x)) <i>(le cours écrit 2th(2x) au numérateur : coquille)</i><br><b>Linéarisation</b> : ch²(x) = (ch(2x) + 1)/2 · sh²(x) = (ch(2x) − 1)/2 · th²(x) = (ch(2x) − 1)/(ch(2x) + 1)<br><b>Factorisation</b> : ch(x + y) + ch(x − y) = 2ch(x)ch(y) · ch(x + y) − ch(x − y) = 2sh(x)sh(y) · sh(x + y) + sh(x − y) = 2sh(x)ch(y) · sh(x + y) − sh(x − y) = 2ch(x)sh(y)</div>
+
+<h2 id="quiz"><b>8</b>Auto-test</h2>
+<details><summary>Négation de « ∀ x ∈ E, P(x) » ?</summary>« ∃ x ∈ E, Non P(x) ».</details>
+<details><summary>Que vérifier en premier pour un sous-espace vectoriel ?</summary>0<sub>E</sub> ∈ F, puis X + Y ∈ F et α × X ∈ F.</details>
+<details><summary>Combien de racines n-ièmes pour Z ∈ ℂ* ?</summary>n racines : R^{1/n}.e^{i(φ/n + 2kπ/n)}, k ∈ {0, …, n − 1}.</details>
+<details><summary>Famille libre de 3 vecteurs dans ℝ³ ?</summary>C'est une base (dim ℝ³ = 3).</details>
+<h3>Quiz</h3>
+<div class="card q" id="qz"></div>
+</main>
+<script>
+const r=document.documentElement;document.getElementById('th').onclick=()=>{const d=getComputedStyle(r).getPropertyValue('--bg').trim()=='#0f1220';r.dataset.theme=d?'light':'dark'};
+const Q=[["Non(P⇒Q) équivaut à :",["Non P ⇒ Non Q","P et Non Q","Non P ou Q"],1],["∃x∈ℝ, ∀y∈ℝ : x+y>0 est :",["Vraie","Fausse"],1],["arg(z/z') =",["arg z + arg z'","arg z − arg z'","−arg z"],1],["Une famille libre de n vecteurs dans E de dimension n est :",["Liée","Une base","Non génératrice"],1],["ch²(x) − sh²(x) =",["0","1","ch(2x)"],1],["ln(x)/x tend vers … en +∞ :",["+∞","1","0"],2]];
+let s=0,n=0,h='';Q.forEach((q,i)=>{h+=`<p><b>${i+1}. ${q[0]}</b></p>`+q[1].map((o,j)=>`<button data-i="${i}" data-j="${j}">${o}</button>`).join('')});h+='<p id="sc"></p>';qz.innerHTML=h;
+qz.onclick=e=>{const b=e.target;if(b.tagName!='BUTTON'||b.parentNode.dataset.d)return;const i=+b.dataset.i,ok=+b.dataset.j==Q[i][2];b.classList.add(ok?'ok':'ko');if(ok)s++;n++;[...qz.querySelectorAll(`button[data-i="${i}"]`)].forEach(x=>x.disabled=true);sc.textContent=`Score : ${s}/${n}`}
+</script></body></html>
