@@ -1,9 +1,11 @@
-# Révision Maths
+# Maths Revision
 
-Site de révision en une seule page (Algèbre I et Analyse I).
+A simple revision website for my Algèbre I and Analyse I courses . 
 
-**Contenu :** logique, raisonnements, espaces vectoriels, dimension, nombres complexes, fonctions usuelles, formules (trigonométrie et hyperboliques), auto-test et quiz.
+**Live site:** https://yousri25.github.io/Math/
 
-**Utilisation :** ouvrir `index.html` dans un navigateur. Aucune installation. Bouton « Thème » pour le mode clair/sombre.
+It covers logic, vector spaces, matrices, complex numbers, common functions, integration and a table of primitives, plus a short quiz.
 
-**Lien :** https://yousri25.github.io/Math
+## Usage
+
+Open `index.html` in a browser. There is nothing to install.
