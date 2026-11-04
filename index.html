@@ -21,7 +21,11 @@ table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid var(--ln);pad
 .s{overflow-x:auto}p{margin:.5em 0}.m{color:var(--mut)}
 #q button{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;background:var(--bg);color:var(--ink);border:1px solid var(--ln);border-radius:8px;cursor:pointer;font:inherit}
 #q button.ok{border-color:var(--ok);background:var(--ok);color:var(--card)}#q button.no{border-color:#c0392b;background:#c0392b;color:#fff}
-</style></head><body>
+.katex-display{overflow-x:auto;overflow-y:hidden;margin:.6em 0}.katex{font-size:1.08em}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'\\[',right:'\\]',display:true},{left:'\\(',right:'\\)',display:false}],macros:{'\\R':'\\mathbb{R}','\\C':'\\mathbb{C}','\\N':'\\mathbb{N}','\\Z':'\\mathbb{Z}','\\Q':'\\mathbb{Q}','\\K':'\\mathbb{K}','\\ch':'\\operatorname{ch}','\\sh':'\\operatorname{sh}','\\th':'\\operatorname{th}','\\tg':'\\operatorname{tg}','\\cotg':'\\operatorname{cotg}','\\arctg':'\\operatorname{arctg}','\\dd':'\\,\\mathrm{d}'}})"></script></head><body>
 <nav><a href="#log">Logique</a><a href="#rais">Raisonnements</a><a href="#ev">Esp. vectoriels</a><a href="#mat">Matrices</a><a href="#cx">Complexes</a><a href="#fu">Fonctions</a><a href="#int">Intégration</a><a href="#prim">Primitives</a><a href="#tr">Formules</a><a href="#quiz">Quiz</a><button id="th">🌓 Thème</button></nav>
 <main>
 <h1>Maths : révision complète</h1>
@@ -70,79 +74,145 @@ table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid var(--ln);pad
 </section>
 
 <section id="mat"><h2>4 · Calcul matriciel</h2>
-<div class="b"><b>Matrice</b> A=(aᵢⱼ)∈Mₙ,ₚ(K) : n lignes, p colonnes. Particulières : nulle, carrée Mₙ(K), triangulaire sup. (aᵢⱼ=0 si j&lt;i), inf. (aᵢⱼ=0 si i&lt;j), diagonale, identité Iₙ.</div>
-<div class="b"><b>Exemples</b> A=[[0,1,2],[4,12,1],[3,5,2],[9,7,6]]∈M₄,₃(ℝ) ; B=[[1,2,3,4],[0,10,9,7],[4,6,8,1]]∈M₃,₄(ℝ) ; diagonale [[1,0,0],[0,2,0],[0,0,3]]∈M₃(ℝ) ; I₂=[[1,0],[0,1]] ; triangulaire sup. [[1,0,9],[0,0,√3],[0,0,1]] ; triangulaire inf. [[1,0,0],[1,2,0],[1,0,1]]. Les aᵢⱼ sont les coefficients de A ; Mₙ,ₚ(K) = ensemble des matrices à n lignes et p colonnes.</div>
-<div class="b"><b>Somme</b> (même taille) cᵢⱼ=aᵢⱼ+bᵢⱼ. <b>Produit par λ</b> : dᵢⱼ=λaᵢⱼ. Propriétés : A+B=B+A, (A+B)+C=A+(B+C), A+0=A, (α+β)A=αA+βA, α(A+B)=αA+αB.<br>Ex : [[1,2,3],[4,5,6]]+[[4,10,9],[7,8,0]]=[[5,12,12],[11,13,6]] ; 2·[[4,3,2],[1,5,4]]=[[8,6,4],[2,10,8]]. La somme n'est définie que pour deux matrices de même taille.</div>
-<div class="b"><b>Produit</b> A∈Mₙ,ₚ, B∈Mₚ,q : cᵢⱼ=Σₖ₌₁ᵖ aᵢₖbₖⱼ, C∈Mₙ,q. Défini si #colonnes(A)=#lignes(B). Non commutatif. Si AB=BA : (A+B)ⁿ=Σₖ₌₀ⁿ C(n,k)AᵏBⁿ⁻ᵏ. (AB)C=A(BC), A(B+C)=AB+AC, (A+B)C=AC+BC, A0=0A=0, IₙA=A=AIₚ.<br>Ex : [[1,2],[0,−1],[5,3]]·[[1,−2,0,3,0],[−7,0,2,1,0]] = [[−13,−2,4,5,0],[7,0,−2,−1,0],[−16,−10,6,18,0]].</div>
-<div class="b"><b>Transposée</b> ᵗA∈Mₚ,ₙ de terme aⱼᵢ. ᵗ(A+B)=ᵗA+ᵗB ; ᵗ(λA)=λᵗA ; ᵗ(ᵗA)=A ; (ᵗA)ᵏ=ᵗ(Aᵏ) (k∈ℕ, A carrée). Ex : ᵗ[[2,1,5],[3,−1,0]]=[[2,3],[1,−1],[5,0]].</div>
-<h3>Déterminant (A∈Mₙ(K))</h3>
-<div class="b">n=1 : det(a)=a. n≥2 : det A=Σᵢ aᵢ₁(−1)ⁱ⁺¹det(Aᵢ₁) (Aᵢ₁ : ligne i et colonne 1 enlevées). 2×2 : det[[a,b],[c,d]]=ad−bc ; det[[1,2,3],[4,5,6],[7,8,9]]=0. Ligne ou colonne nulle ⇒ det=0. Diagonale ou triangulaire : produit des aᵢᵢ.<br>det(AB)=det A·det B ; det(λA)=λⁿdet A ; det A=det ᵗA.</div>
-<h3>Inverse</h3>
-<div class="b">A inversible s'il existe B : AB=BA=Iₙ (B=A⁻¹). (A⁻¹)⁻¹=A ; (λA)⁻¹=λ⁻¹A⁻¹ ; (AC)⁻¹=C⁻¹A⁻¹.<br><b>Cofacteur</b> cᵢⱼ=(−1)ⁱ⁺ʲdet(Aᵢⱼ) ; com(A)=(cᵢⱼ). Ex : A=[[1,2],[3,4]] → com(A)=[[4,−3],[−2,1]] (c₁₁=4, c₁₂=−3, c₂₁=−2, c₂₂=1 ; com(A) : chaque aᵢⱼ remplacé par cᵢⱼ).<br><b>Th.</b> A inversible ⇔ det A≠0, et alors A⁻¹=(1/det A)·ᵗcom(A).</div>
-<p><b>Exercices</b> : det de [[0,1,2],[1,1,2],[0,2,3]] et [[1,1,2],[1,2,1],[2,1,1]] ; inverses de [[2,−4],[−3,1]], [[0,1,2],[1,1,2],[0,2,3]], [[1,1,2],[1,2,1],[2,1,1]], [[1,2,3],[0,1,2],[−1,−4,−1]].</p></section>
+<div class="b"><b>1.1 Définition</b> Soit \(n,p\) strictement positifs. Une matrice à \(n\) lignes et \(p\) colonnes est un tableau rectangulaire noté \(A=(a_{i,j})_{1\le i\le n,\,1\le j\le p}\) : l'indice de ligne \(i\) va de 1 à \(n\), celui de colonne \(j\) de 1 à \(p\).
+\[A=\begin{pmatrix}a_{1,1}&\cdots&a_{1,j}&\cdots&a_{1,p}\\ \vdots&&\vdots&&\vdots\\ a_{i,1}&\cdots&a_{i,j}&\cdots&a_{i,p}\\ \vdots&&\vdots&&\vdots\\ a_{n,1}&\cdots&a_{n,j}&\cdots&a_{n,p}\end{pmatrix}\]
+Les \(a_{i,j}\) sont les coefficients de \(A\). On note \(M_{n,p}(\K)\) l'ensemble des matrices à \(n\) lignes et \(p\) colonnes (\(\K=\R\) ou \(\C\)).<br>
+Exemples : \(A=\begin{pmatrix}0&1&2\\4&12&1\\3&5&2\\9&7&6\end{pmatrix}\in M_{4,3}(\R)\), \(B=\begin{pmatrix}1&2&3&4\\0&10&9&7\\4&6&8&1\end{pmatrix}\in M_{3,4}(\R)\).</div>
+<div class="b"><b>1.2 Matrices particulières</b> 1. <i>Nulle</i> : tous les coefficients sont nuls. 2. <i>Carrée</i> : autant de lignes que de colonnes ; ensemble noté \(M_n(\K)\). 3. <i>Triangulaire supérieure</i> : carrée avec \(a_{i,j}=0\) pour \(j<i\). 4. <i>Triangulaire inférieure</i> : \(a_{i,j}=0\) pour \(i<j\). 5. <i>Diagonale</i> : \(a_{i,j}=0\) pour \(i\ne j\). 6. <i>Identité</i> \(I_n\) : diagonale avec \(a_{i,i}=1\), \(a_{i,j}=0\) pour \(i\ne j\).<br>
+Exemples : \(\begin{pmatrix}1&0&0\\0&2&0\\0&0&3\end{pmatrix}\) diagonale ; \(I_2=\begin{pmatrix}1&0\\0&1\end{pmatrix}\) ; \(\begin{pmatrix}1&0&9\\0&0&\sqrt3\\0&0&1\end{pmatrix}\) triangulaire supérieure ; \(\begin{pmatrix}1&0&0\\1&2&0\\1&0&1\end{pmatrix}\) triangulaire inférieure.</div>
+<div class="b"><b>1.3.1 Somme</b> \(A=(a_{i,j}),B=(b_{i,j})\in M_{n,p}(\K)\) : \(C=A+B\), \(c_{i,j}=a_{i,j}+b_{i,j}\), \(\forall i\in\{1,\dots,n\},\forall j\in\{1,\dots,p\}\).<br>Ex : \(\begin{pmatrix}1&2&3\\4&5&6\end{pmatrix}+\begin{pmatrix}4&10&9\\7&8&0\end{pmatrix}=\begin{pmatrix}5&12&12\\11&13&6\end{pmatrix}\).</div>
+<div class="b"><b>1.3.2 Produit par un scalaire</b> \(\lambda\in\K\) : \(D=\lambda A\), \(d_{i,j}=\lambda\cdot a_{i,j}\). Ex : \(2\begin{pmatrix}4&3&2\\1&5&4\end{pmatrix}=\begin{pmatrix}8&6&4\\2&10&8\end{pmatrix}\).<br>
+<i>Propriétés</i> (\(A,B,C\in M_{n,p}(\K)\), \(\alpha,\beta\in\K\)) : 1. \(A+B=B+A\). 2. \((A+B)+C=A+(B+C)\). 3. \(A+0=A\). 4. \((\alpha+\beta)A=\alpha A+\beta A\). 5. \(\alpha(A+B)=\alpha A+\alpha B\).</div>
+<div class="b"><b>1.3.3 Produit</b> \(A=(a_{i,k})\in M_{n,p}(\K)\), \(B=(b_{k,j})\in M_{p,q}(\K)\) : \(C=AB\in M_{n,q}(\K)\), \[c_{i,j}=\sum_{k=1}^{p}a_{i,k}\,b_{k,j},\quad\forall i\in\{1,\dots,n\},\ \forall j\in\{1,\dots,q\}.\]
+Ex : \(\begin{pmatrix}1&2\\0&-1\\5&3\end{pmatrix}\begin{pmatrix}1&-2&0&3&0\\-7&0&2&1&0\end{pmatrix}=\begin{pmatrix}-13&-2&4&5&0\\7&0&-2&-1&0\\-16&-10&6&18&0\end{pmatrix}\in M_{3,5}(\R)\).<br>
+<i>Remarques</i> : 1. La somme n'est définie que pour des matrices de même taille. 2. \(AB\) n'est défini que si le nombre de colonnes de \(A\) égale le nombre de lignes de \(B\). 3. Le produit n'est pas commutatif. 4. Si \(AB=BA\) : \((A+B)^n=\sum_{k=0}^{n}C_n^k\,A^kB^{n-k}\).<br>
+<i>Propriétés</i> : 1. \((AB)C=A(BC)\). 2. \(A(B+C)=AB+AC\) et \((A+B)C=AC+BC\). 3. \(A\cdot0=0\), \(0\cdot A=0\). <i>Proposition</i> : \(A\in M_{n,p}(\K)\Rightarrow I_nA=A\) et \(AI_p=A\).</div>
+<div class="b"><b>1.4 Transposée</b> \(A\in M_{n,p}(\K)\) : \({}^tA\in M_{p,n}(\K)\) de terme général \(a_{j,i}\). Ex : \(A=\begin{pmatrix}2&1&5\\3&-1&0\end{pmatrix}\Rightarrow{}^tA=\begin{pmatrix}2&3\\1&-1\\5&0\end{pmatrix}\).<br>
+<i>Propriétés</i> : 1. \({}^t(A+B)={}^tA+{}^tB\). 2. \({}^t(\lambda A)=\lambda\,{}^tA\). 3. \({}^t({}^tA)=A\). 4. \(({}^tA)^k={}^t(A^k)\), \(k\in\N\), \(A\) carrée.</div>
+<div class="b e"><b>2 Déterminant</b> \(A\in M_n(\K)\), noté \(|A|\) ou \(\det(A)\) : si \(n=1\), \(A=(a)\), \(\det(A)=a\) ; si \(n\ge2\), \[\det(A)=\sum_{i=1}^{n}a_{i,1}(-1)^{i+1}\det(A_{i,1}),\] où \(A_{i,1}\) est obtenue en enlevant à \(A\) la \(i\)-ème ligne et la première colonne.<br>
+Exemples : \(\det\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-cb\) ; \(\det\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=0\).<br>
+<i>Remarques</i> : 1. Une ligne ou une colonne nulle ⇒ déterminant nul. 2. Matrice diagonale ou triangulaire : \(\det(A)=\prod_{i=1}^{n}a_{i,i}\).<br>
+<i>Propriétés</i> (\(A,B\in M_n(\K)\), \(\lambda\in\K\)) : 1. \(\det(AB)=\det(A)\det(B)\). 2. \(\det(\lambda A)=\lambda^n\det(A)\). 3. \(\det(A)=\det({}^tA)\).<br>
+Calculer les déterminants de \(A=\begin{pmatrix}0&1&2\\1&1&2\\0&2&3\end{pmatrix}\) et \(B=\begin{pmatrix}1&1&2\\1&2&1\\2&1&1\end{pmatrix}\).</div>
+<div class="b e"><b>3 Inverse</b> <i>Définition</i> : \(A\in M_n(\K)\) est inversible s'il existe \(B\in M_n(\K)\) tel que \(AB=BA=I_n\) ; on note \(B=A^{-1}\).<br>
+<i>Proposition</i> (\(A,C\) inversibles, \(\lambda\in\K^*\)) : 1. \(A^{-1}\) est inversible, d'inverse \(A\). 2. \(\lambda A\) est inversible, d'inverse \(\frac1\lambda A^{-1}\). 3. \((AC)^{-1}=C^{-1}A^{-1}\).<br>
+<i>Cofacteurs</i> : \(c_{i,j}=(-1)^{i+j}\det(A_{i,j})\), où \(A_{i,j}\) est obtenue en éliminant la \(i\)-ème ligne et la \(j\)-ème colonne. <i>Comatrice</i> \(\mathrm{com}(A)\) : chaque \(a_{i,j}\) remplacé par \(c_{i,j}\).<br>
+Ex : \(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\) : \(c_{1,1}=4,\ c_{1,2}=-3,\ c_{2,1}=-2,\ c_{2,2}=1\), \(\mathrm{com}(A)=\begin{pmatrix}4&-3\\-2&1\end{pmatrix}\).<br>
+<b>Théorème 1</b> : \(A\) est inversible \(\iff\det(A)\ne0\). <b>Théorème 2</b> : si \(A\) est inversible, \[A^{-1}=\frac{1}{\det(A)}\;{}^t\mathrm{com}(A).\]
+<i>Exercice</i> : inverses (quand c'est possible) de \(\begin{pmatrix}2&-4\\-3&1\end{pmatrix}\), \(\begin{pmatrix}0&1&2\\1&1&2\\0&2&3\end{pmatrix}\), \(\begin{pmatrix}1&1&2\\1&2&1\\2&1&1\end{pmatrix}\), \(\begin{pmatrix}1&2&3\\0&1&2\\-1&-4&-1\end{pmatrix}\).</div>
+</section>
 
 <section id="cx"><h2>5 · Nombres complexes</h2>
-<div class="b"><b>ℂ</b> contient ℝ et i (i²=−1) ; tout z s'écrit z=x+iy de façon unique ; pas de relation d'ordre (impossible d'en définir une compatible avec celle de ℝ et de mêmes propriétés) ; addition et multiplication de règles analogues à celles de ℝ. z=z′ ⇔ x=x′ et y=y′.</div>
-<div class="b"><b>Conjugué</b> z̄=x−iy. conj(z̄)=z ; conj(z+z′)=z̄+z̄′ ; conj(zz′)=z̄z̄′ ; conj(1/z′)=1/z̄′ ; conj(z/z′)=z̄/z̄′ ; z̄=z⇔z∈ℝ ; z̄=−z⇔z∈iℝ.<br>Re z=(z+z̄)/2 ; Im z=(z−z̄)/2i ; Re(z+z′)=Re z+Re z′ ; Im(z+z′)=Im z+Im z′ ; Re(λz)=λRe z ; Im(λz)=λIm z (λ∈ℝ). z=x+iy : forme algébrique, x=Re z, y=Im z.</div>
-<div class="b"><b>Module</b> |z|=√(x²+y²). |z|≥0 ; |z|=0⇔z=0 ; |z|²=zz̄ (si |z|=1 : z̄=1/z ; sinon 1/z=z̄/|z|²) ; |z̄|=|z| ; |zz′|=|z||z′| ; |z/z′|=|z|/|z′| ; |z+z′|≤|z|+|z′|.</div>
-<div class="b"><b>Argument</b> Plan muni d'un repère orthonormé direct (O,u,v) ; z=x+iy non nul, M(x,y). Argument : mesure en radians de l'angle (u,OM), défini modulo 2π, pas pour 0. arg(zz′)=arg z+arg z′ ; arg zⁿ=n·arg z ; arg(1/z)=arg z̄=−arg z ; arg(z/z′)=arg z−arg z′ ; arg(−z)=arg z+π [2π]. arg z=0[2π]⇔z∈ℝ*₊ ; =0[π]⇔z∈ℝ* ; =π/2[π]⇔z∈iℝ*. |z+z′|=|z|+|z′|⇔arg z=arg z′ [2π].</div>
-<div class="b e"><b>Euler</b> e^{iθ}=cosθ+i sinθ. e^{i(θ+θ′)}=e^{iθ}e^{iθ′} ; 1/e^{iθ}=e^{−iθ} ; (e^{iθ})ⁿ=e^{inθ} ; conj(e^{iθ})=e^{−iθ} ; e^{iθ}=1⇔θ∈2πℤ. Pour z≠0 de module r et d'argument θ : z=r(cosθ+i sinθ) forme géométrique ; z=re^{iθ} forme exponentielle.</div>
-<div class="b"><b>Racines n-ièmes</b> Z=zⁿ ⇔ R=rⁿ et φ=nϕ [2π]. Les n racines de Z : R^{1/n}e^{i(φ/n+2kπ/n)}, k=0..n−1.</div>
-<p><b>Exercices</b> : résoudre 2z+6z̄=3+2i ; |z|≤k&lt;1 ⇒ 1−k≤|1+z|≤1+k ; forme exponentielle de 1+cosθ+i sinθ et ((1+i√3)/(1−i))²⁰ ; pour z∈ℂ∖{1}, z′=(z−1)/(1−z̄) : |z′|=1, (z′−1)/(z−1)∈ℝ, (z′+1)/(z−1)∈iℝ ; résoudre z²+z+1=0, z²+(5−2i)z+5−5i=0, z⁴−3iz²+4=0, ((z+i)/(z−i))³+((z+i)/(z−i))²+(z+i)/(z−i)+1=0 ; racines cubiques de 1+i√3.</p></section>
+<div class="b"><b>1 Introduction</b> \(\C\) est l'ensemble contenant \(\R\) tel que : \(\C\) contient un élément \(i\) vérifiant \(i^2=-1\) ; tout \(z\in\C\) s'écrit de manière unique \(z=x+iy\) (\(x,y\in\R\)) ; \(\C\) est muni d'une addition et d'une multiplication de règles analogues à celles de \(\R\). Il n'existe pas de relation d'ordre compatible avec celle de \(\R\) et de mêmes propriétés. \(z=z'\iff x=x'\) et \(y=y'\).</div>
+<div class="b"><b>2 Conjugaison, partie réelle, partie imaginaire</b> <i>Conjugué</i> : \(\bar z=x-iy\). Pour tout \(z,z'\) : 1. \(\bar{\bar z}=z\). 2. \(\overline{z+z'}=\bar z+\bar z'\). 3. \(\overline{z z'}=\bar z\,\bar z'\). 4. Si \(z'\ne0\) : \(\overline{\left(\frac1{z'}\right)}=\frac1{\bar z'}\), \(\overline{\left(\frac z{z'}\right)}=\frac{\bar z}{\bar z'}\). 5. \(\bar z=z\iff z\in\R\) ; \(\bar z=-z\iff z\in i\R\).<br>
+<i>Forme algébrique</i> \(z=x+iy\) : \(x=\mathrm{Re}(z)\), \(y=\mathrm{Im}(z)\). \[\mathrm{Re}(z)=\frac{z+\bar z}2,\quad\mathrm{Im}(z)=\frac{z-\bar z}{2i}.\] \(\mathrm{Re}(z+z')=\mathrm{Re}(z)+\mathrm{Re}(z')\), \(\mathrm{Im}(z+z')=\mathrm{Im}(z)+\mathrm{Im}(z')\), \(\mathrm{Re}(\lambda z)=\lambda\mathrm{Re}(z)\), \(\mathrm{Im}(\lambda z)=\lambda\mathrm{Im}(z)\) (\(\lambda\in\R\)).<br><i>Exercice</i> : résoudre \(2z+6\bar z=3+2i\).</div>
+<div class="b"><b>3 Module</b> \(|z|=\sqrt{x^2+y^2}\). 1. \(|z|\ge0\). 2. \(|z|=0\iff z=0\). 3. \(|z|^2=z\bar z\) ; si \(|z|=1\) alors \(\bar z=\frac1z\) ; si \(z\ne0\), \(\frac1z=\frac{\bar z}{|z|^2}\). 4. \(|\bar z|=|z|\). 5. \(|zz'|=|z||z'|\). 6. \(\left|\frac z{z'}\right|=\frac{|z|}{|z'|}\). 7. \(|z+z'|\le|z|+|z'|\).<br><i>Exercice</i> : \(|z|\le k<1\Rightarrow1-k\le|1+z|\le1+k\).</div>
+<div class="b"><b>4 Argument</b> Plan muni d'un repère orthonormé direct \((O,\vec u,\vec v)\) ; \(z=x+iy\ne0\), \(M(x,y)\) : \(\theta=\arg(z)\) est une mesure en radians de \((\vec u,\overrightarrow{OM})\), définie modulo \(2\pi\) ; pas d'argument pour 0.<br>
+1. \(\arg(zz')=\arg z+\arg z'\ [2\pi]\) ; \(\arg(z^n)=n\arg z\). 2. \(\arg\frac1z=\arg\bar z=-\arg z\). 3. \(\arg\frac z{z'}=\arg z-\arg z'\). 4. \(\arg(-z)=\arg z+\pi\). 5. \(\arg z=0\,[2\pi]\iff z\in\R_+^*\) ; \(\arg z=0\,[\pi]\iff z\in\R^*\) ; \(\arg z=\pi/2\,[\pi]\iff z\in i\R^*\). 6. \(|z+z'|=|z|+|z'|\iff\arg z=\arg z'\,[2\pi]\).</div>
+<div class="b e"><b>5 Puissances et racines</b> <i>Euler</i> : \(e^{i\theta}=\cos\theta+i\sin\theta\). Propriétés : \(e^{i(\theta+\theta')}=e^{i\theta}e^{i\theta'}\) ; \(\frac1{e^{i\theta}}=e^{-i\theta}\) ; \((e^{i\theta})^n=e^{in\theta}\) (\(n\in\Z\)) ; \(\frac{e^{i\theta}}{e^{i\theta'}}=e^{i(\theta-\theta')}\) ; \(\overline{e^{i\theta}}=e^{-i\theta}\) ; \(e^{i\theta}=1\iff\theta\in2\pi\Z\).<br>
+\(z\ne0\), module \(r\), argument \(\theta\) : \(z=r(\cos\theta+i\sin\theta)\) forme géométrique, \(z=re^{i\theta}\) forme exponentielle.<br>
+<i>Racines \(n\)-ièmes</i> : \(n\in\N^*\), \(z=re^{i\varphi}\), \(Z=Re^{i\phi}\) : \(Z=z^n\iff R=r^n\) et \(\phi=n\varphi\,[2\pi]\), c'est-à-dire \(r=R^{1/n}\), \(\varphi=\frac\phi n\left[\frac{2\pi}n\right]\). \(Z\) admet \(n\) racines : \[R^{1/n}e^{i\left(\frac\phi n+\frac{2k\pi}n\right)},\quad k\in\{0,1,\dots,n-1\}.\]</div>
+<div class="b"><b>6 Applications</b> <b>Exercice 1</b> forme exponentielle de 1. \(1+\cos\theta+i\sin\theta\), \(\theta\in\R\) ; 2. \(\left(\frac{1+i\sqrt3}{1-i}\right)^{20}\).<br>
+<b>Exercice 2</b> \(z\in\C\setminus\{1\}\), \(z'=\dfrac{z-1}{1-\bar z}\). Montrer : 1. \(|z'|=1\) ; 2. \(\dfrac{z'-1}{z-1}\in\R\) ; 3. \(\dfrac{z'+1}{z-1}\in i\R\).<br>
+<b>Exercice 3</b> résoudre : 1. \(z^2+z+1=0\) ; 2. \(z^2+(5-2i)z+5-5i=0\) ; 3. \(z^4-3iz^2+4=0\) ; 4. \(\left(\frac{z+i}{z-i}\right)^3+\left(\frac{z+i}{z-i}\right)^2+\frac{z+i}{z-i}+1=0\).<br>
+<b>Exercice 4</b> racines cubiques de \(1+i\sqrt3\).</div>
+</section>
 
 <section id="fu"><h2>6 · Fonctions usuelles</h2>
-<div class="b"><b>ln</b> Unique primitive de x↦1/x sur ℝ*₊ qui s'annule en 1 ; infiniment dérivable, strictement croissante ; ln(1+x)≤x (x&gt;−1). ln(ab)=ln a+ln b ; ln(1/a)=−ln a ; ln(a/b)=ln a−ln b ; ln(aʳ)=r ln a (r∈ℚ, a,b&gt;0). Limites : ln→+∞ (+∞), →−∞ (0⁺), ln x/x→0, x ln x→0 (0⁺), ln x/(x−1)→1 (x→1), ln(1+x)/x→1 (x→0).</div>
-<div class="b"><b>exp</b> Nombre de Neper e : unique réel tel que ln e=1. exp réciproque de ln : y=exp x ⇔ x=ln y (x∈ℝ, y&gt;0) ; infiniment dérivable, strictement croissante ; ln(exp x)=x ; exp(ln x)=x (x&gt;0) ; exp 0=1 ; exp 1=e ; exp′=exp ; exp x≥x+1 ; exp(x+y)=exp x·exp y ; exp(−x)=1/exp x ; exp(x−y)=exp x/exp y ; (exp x)ʳ=exp(rx) (r∈ℚ). Limites : +∞→+∞ ; −∞→0 ; exp x/x→+∞ ; x exp x→0 (−∞) ; (exp x−1)/x→1 (0).</div>
-<div class="b"><b>Puissances</b> Pα(x)=xᵅ=exp(α ln x), Pα infiniment dérivable sur ℝ*₊, Pα′=αxᵅ⁻¹ ; P₀(0)=1 par prolongement ; croissante si α&gt;0, décroissante si α&lt;0. α&gt;0 : Pα(0)=0 (continue sur [0,+∞[) ; α&gt;1 : Pα′(0)=0 ; 0&lt;α&lt;1 : Pα′→+∞ en 0.</div>
-<div class="b"><b>Comparaisons</b> (ln x)ᵅ/xᵝ→0 (+∞) ; xᵅ|ln x|ᵝ→0 (0⁺) ; (exp x)ᵅ/xᵝ→+∞ ; |x|ᵅexp(βx)→0 (−∞) ; aˣ/xᵅ→+∞ (a&gt;1).</div>
-<div class="b"><b>Trigonométrie</b> (sin, cos infiniment dérivables sur ℝ, sin impaire, cos paire, 2π-périodiques)  sin′=cos, cos′=−sin ; cos²+sin²=1. tg=sin/cos sur ℝ∖{π/2+πℤ}, tg′=1/cos²=1+tg². cotg=cos/sin sur ℝ∖πℤ, cotg′=−1/sin²=−1−cotg². tg, cotg impaires, π-périodiques.</div>
-<div class="b"><b>Formules (§5.2)</b> Arcs associés, addition, duplication, linéarisation et factorisation : voir <a href="#tr">Annexes</a>.</div>
-<div class="b e"><b>Réciproques</b><br>sin:[−π/2,π/2]→[−1,1], cos:[0,π]→[−1,1] (strictement décroissante) et tg:]−π/2,π/2[→ℝ sont continues et strictement monotones, donc admettent des réciproques : arcsin(x)=y⇔x=sin y (x∈[−1,1], y∈[−π/2,π/2]) ; arccos(x)=y⇔x=cos y (y∈[0,π]) ; arctg(x)=y⇔x=tg y (x∈ℝ, y∈]−π/2,π/2[). cos(arccos x)=x ; tg(arctg x)=x ; arctg(tg x) définie sur ℝ∖{π/2+πℤ}.<br>arcsin : [−1,1]→[−π/2,π/2], impaire, arcsin′=1/√(1−x²) sur ]−1,1[. sin(arcsin x)=x ; arcsin(sin x)=x sur [−π/2,π/2] (2π-périodique, impaire).<br>arccos : [−1,1]→[0,π], ni paire ni impaire, arccos′=−1/√(1−x²). arccos(cos x)=x sur [0,π] (2π-périodique, paire).<br>arctg : ℝ→]−π/2,π/2[, impaire, arctg′=1/(1+x²). arctg(tg x)=x sur ]−π/2,π/2[ (π-périodique, impaire).<br>Exercices : résoudre sur ℝ arcsin(sin x)=π/9 et sin(arcsin x)=π/9 ; montrer que ∀x∈[−1,1], arccos x+arcsin x=π/2 ; étudier la fonction x↦arctg x+arctg(1/x).</div></section>
+<div class="b"><b>1 Logarithme népérien</b> \(\ln\) est l'unique primitive sur \(\R_+^*\) de \(x\mapsto\frac1x\) qui s'annule en 1 ; infiniment dérivable, strictement croissante, et \(\forall x>-1\) : \(\ln(1+x)\le x\).<br>
+Propriétés (\(a,b>0\)) : \(\ln(ab)=\ln a+\ln b\) ; \(\ln\frac1a=-\ln a\) ; \(\ln\frac ab=\ln a-\ln b\) ; \(\ln(a^r)=r\ln a\), \(r\in\Q\).<br>
+Limites : \(\lim_{x\to+\infty}\ln x=+\infty\) ; \(\lim_{x\to0^+}\ln x=-\infty\) ; \(\lim_{x\to+\infty}\frac{\ln x}x=0\) ; \(\lim_{x\to0^+}x\ln x=0\) ; \(\lim_{x\to1}\frac{\ln x}{x-1}=1\) ; \(\lim_{x\to0}\frac{\ln(1+x)}x=1\).</div>
+<div class="b e"><b>2 Exponentielle</b> Nombre de Neper \(e\) : unique réel tel que \(\ln e=1\). \(\exp\) est la réciproque de \(\ln\) : \(y=\exp x\iff x=\ln y\) (\(x\in\R,y>0\)) ; infiniment dérivable, strictement croissante, \((\exp)'=\exp\), \(\exp x\ge x+1\). Remarques : \(\ln(\exp x)=x\) ; \(\exp(\ln x)=x\) (\(x>0\)) ; \(\exp0=1\) ; \(\exp1=e\).<br>
+Propriétés : \(\exp(x+y)=\exp x\exp y\) ; \(\exp(-x)=\frac1{\exp x}\) ; \(\exp(x-y)=\frac{\exp x}{\exp y}\) ; \((\exp x)^r=\exp(rx)\), \(r\in\Q\).<br>
+Limites : \(\lim_{x\to+\infty}\exp x=+\infty\) ; \(\lim_{x\to-\infty}\exp x=0\) ; \(\lim_{x\to+\infty}\frac{\exp x}x=+\infty\) ; \(\lim_{x\to-\infty}x\exp x=0\) ; \(\lim_{x\to0}\frac{\exp x-1}x=1\).</div>
+<div class="b"><b>3 Fonctions puissances</b> \(\alpha\in\R\) : \(P_\alpha:\R_+^*\to\R\), \(P_\alpha(x)=x^\alpha=\exp(\alpha\ln x)\). Pour \(\alpha>0\), \(P_\alpha(0)=0\) : continue sur \([0,+\infty[\) ; \(P_0(0)=1\) par continuité. \(P_\alpha\) infiniment dérivable sur \(\R_+^*\), \(P_\alpha'(x)=\alpha x^{\alpha-1}\) ; croissante si \(\alpha>0\), décroissante si \(\alpha<0\). Pour \(\alpha>1\) : \(P_\alpha'\) continue sur \(\R_+\), \(P_\alpha'(0)=0\). Pour \(0<\alpha<1\) : \(\lim_{x\to0}P_\alpha'(x)=+\infty\).</div>
+<div class="b e"><b>4 Comparaisons locales</b> \(\alpha,\beta>0\) : \(\lim_{x\to+\infty}\frac{(\ln x)^\alpha}{x^\beta}=0\) ; \(\lim_{x\to0^+}x^\alpha|\ln x|^\beta=0\) ; \(\lim_{x\to+\infty}\frac{(\exp x)^\alpha}{x^\beta}=+\infty\) ; \(\lim_{x\to-\infty}|x|^\alpha\exp(\beta x)=0\) ; \(a>1\) : \(\lim_{x\to+\infty}\frac{a^x}{x^\alpha}=+\infty\).</div>
+<div class="b"><b>5 Fonctions trigonométriques</b> \(\sin,\cos\) infiniment dérivables sur \(\R\) ; \(\sin'=\cos\), \(\cos'=-\sin\) ; \(\sin\) impaire, \(\cos\) paire, \(2\pi\)-périodiques ; \(\cos^2x+\sin^2x=1\).<br>
+\(\tg x=\frac{\sin x}{\cos x}\), \(\tg'x=\frac1{\cos^2x}=1+\tg^2x\) sur \(\R\setminus\{\frac\pi2+\pi\Z\}\) ; impaire, \(\pi\)-périodique. \(\cotg x=\frac{\cos x}{\sin x}\), \(\cotg'x=\frac{-1}{\sin^2x}=-1-\cotg^2x\) sur \(\R\setminus\pi\Z\) ; impaire, \(\pi\)-périodique.<br>
+§5.2 Arcs associés, addition, duplication, linéarisation, factorisation : voir <a href="#tr">Annexe 1</a>.</div>
+<div class="b e"><b>6 Fonctions réciproques</b> <b>Arcsinus</b> : \(\sin:[-\frac\pi2,\frac\pi2]\to[-1,1]\) continue strictement croissante ; \(\arcsin x=y\iff x=\sin y\) (\(x\in[-1,1]\), \(y\in[-\frac\pi2,\frac\pi2]\)). Impaire ; dérivable sur \(]-1,1[\) : \(\arcsin'x=\frac1{\sqrt{1-x^2}}\). \(\sin(\arcsin x)=x\) ; \(\arcsin(\sin x)\) définie sur \(\R\), \(2\pi\)-périodique, impaire, \(=x\) sur \([-\frac\pi2,\frac\pi2]\).<br>
+<i>Exercice</i> : résoudre sur \(\R\) : 1. \(\arcsin(\sin x)=\frac\pi9\) ; 2. \(\sin(\arcsin x)=\frac\pi9\).<br>
+<b>Arccosinus</b> : \(\cos:[0,\pi]\to[-1,1]\) continue strictement décroissante ; \(\arccos x=y\iff x=\cos y\) (\(y\in[0,\pi]\)). Ni paire ni impaire ; \(\arccos'x=\frac{-1}{\sqrt{1-x^2}}\) sur \(]-1,1[\). \(\cos(\arccos x)=x\) ; \(\arccos(\cos x)\) définie sur \(\R\), \(2\pi\)-périodique, paire, \(=x\) sur \([0,\pi]\).<br>
+<i>Exercice</i> : montrer que \(\forall x\in[-1,1]\), \(\arccos x+\arcsin x=\frac\pi2\).<br>
+<b>Arctangente</b> : \(\tg:]-\frac\pi2,\frac\pi2[\to\R\) continue strictement croissante ; \(\arctg x=y\iff x=\tg y\). Impaire ; dérivable sur \(\R\) : \(\arctg'x=\frac1{1+x^2}\). \(\tg(\arctg x)=x\) ; \(\arctg(\tg x)\) définie sur \(\R\setminus\{\frac\pi2+\pi\Z\}\), \(\pi\)-périodique, impaire, \(=x\) sur \(]-\frac\pi2,\frac\pi2[\).<br>
+<i>Exercice</i> : étudier \(x\mapsto\arctg x+\arctg\frac1x\).</div>
+</section>
 
-<section id="int"><h2>7 · Intégration</h2>
-<div class="b"><b>Primitive</b> F dérivable, F′=f. Toute fonction continue sur I en admet ; les primitives sont F+k. cos(ax+b) → sin(ax+b)/a ; sin(ax+b) → −cos(ax+b)/a ; (ax+b)ʳ → (ax+b)ʳ⁺¹/(a(r+1)) (a≠0, b∈ℝ, r∈ℚ ; + constante k).</div>
-<div class="b"><b>Intégrale</b> ∫ₐᵇf=[F]ₐᵇ=F(b)−F(a). Ex : ∫₀¹eˣdx=e−1 ; ∫₀^{π/4} sin x/cos²x dx=√2−1. Linéaire, croissante, Chasles ; ∫ₐᵃ=0 ; ∫ₐᵇ=−∫ᵦᵃ.<br>Ex : ∫₋₁²x e^{x²/2}dx=[e^{x²/2}]₋₁²=e²−e^{1/2} ; ∫₁²(√x−1/√x)dx=[⅔x^{3/2}]₁²−[2√x]₁²=(4−2^{3/2})/3.</div>
-<div class="b"><b>Par parties</b> ∫ₐᵇUV′=[UV]ₐᵇ−∫ₐᵇU′V. Ex : ∫₁²ln x dx=2ln2−1 ; ∫₀¹xeˣdx=1 ; ∫₀¹x/√(1+x) dx=[2x√(1+x)]₀¹−∫₀¹2√(1+x)dx=[2x√(1+x)]₀¹−[2·⅔(1+x)^{3/2}]₀¹=4/3−2√2/3. U,V continues sur [a,b] avec U′,V′ continues.</div>
-<div class="b"><b>Changement de variable</b> φ de classe C¹ strictement monotone : ∫ₐᵇf(φ(t))φ′(t)dt=∫_{φ(a)}^{φ(b)}f(x)dx. (f continue sur [φ(a),φ(b)]). Ex : I=∫₀¹√(1−x²)dx, x=φ(t)=sin t, φ:[0,π/2]→[0,1], dx=cos t dt : I=∫₀^{π/2}√(1−sin²t)cos t dt=∫₀^{π/2}cos²t dt=∫₀^{π/2}(1+cos2t)/2 dt=[t/2+sin(2t)/4]₀^{π/2}=π/4.</div>
-<p><b>Exercices</b> : ∫₀^{1/4}dx/√(1−2x) ; ∫₀^{π/2}cos³ ; ∫₀^{π/2}cos²x sin³x ; ∫₁²(1−√x)/(1+√x) ; ∫₀¹dx/(1+eˣ).</p>
-<h3>Intégrales impropres de 1ʳᵉ espèce</h3>
-<div class="b">Borne infinie : ∫ₐ^{+∞}f=lim_{b→+∞}∫ₐᵇf ; ∫_{−∞}^b f=lim_{a→−∞}∫ₐᵇf ; convergente si la limite existe et est finie, sinon divergente. I=lim_{x→+∞}[−1/t]₁ˣ=1. J=∫₁^{+∞}dt/t=lim[ln t]₁ˣ=+∞ : diverge. Si I et J divergent, on ne peut pas conclure sur I+J. Le même énoncé vaut sur ]−∞,b]. Linéarité si les deux convergent ; I et αI (α≠0) de même nature ; I converge et J diverge ⇒ I+J diverge. Fonction complexe : converge ⇔ Re et Im convergent.</div>
-<div class="b e"><b>Références</b> ∫₀^{+∞}e^{−αt}dt converge ⇔ α&gt;0. ∫ₐ^{+∞}dt/tᵅ (a&gt;0) converge ⇔ α&gt;1.</div>
-<div class="b"><b>Fonctions positives</b> (si f est négative, −f est positive : on se ramène aux fonctions positives) Comparaison : 0≤f≤g ; ∫g converge ⇒ ∫f converge ; ∫f diverge ⇒ ∫g diverge. Riemann : si xᵅf(x)→l : α&gt;1 et l∈ℝ ⇒ converge ; α≤1 et l≠0 (même infinie) ⇒ diverge. Absolue convergence ⇒ convergence, |∫f|≤∫|f|.</div>
-<p><b>Exercices</b> : nature de ∫_{−∞}^{+∞}dx/(1+x²) ; ∫₀^{+∞}dt/(eᵗ+1) ; ∫₂^{+∞}dt/ln t ; ∫₁^{+∞}dx/((x+1)(x+2)) ; ∫₁^{+∞}e^{−t²}dt ; ∫₁^{+∞}ln t/(1+t²)dt ; ∫₁^{+∞}cos t/(1+t²)dt.</p></section>
+<section id="int"><h2>7 · Intégration — Intégrales généralisées de 1ʳᵉ espèce</h2>
+<h3>1 Intégration</h3><div class="b"><b>1.1 Primitive</b> \(f\) définie sur un intervalle \(I\) : une primitive est une fonction \(F\) dérivable sur \(I\) telle que \(F'=f\). Toute fonction continue sur \(I\) admet des primitives ; si \(F\) en est une, les primitives sont \(x\mapsto F(x)+k\), \(k\in\R\).<br>
+(\(a\in\R\setminus\{0\}\), \(b\in\R\), \(r\in\Q\)) : \(\cos(ax+b)\to\frac1a\sin(ax+b)+k_1\) ; \(\sin(ax+b)\to-\frac1a\cos(ax+b)+k_2\) ; \((ax+b)^r\to\frac1a\cdot\frac1{r+1}(ax+b)^{r+1}+k_3\).</div>
+<div class="b"><b>1.1.4 Intégrale</b> \[\int_a^bf(x)\,dx=\big[F(x)\big]_a^b=F(b)-F(a).\]
+Ex : \(\int_0^1e^x dx=[e^x]_0^1=e-1\) ; \(\int_0^{\pi/4}\frac{\sin x}{\cos^2x}dx=\left[\frac1{\cos x}\right]_0^{\pi/4}=\sqrt2-1\) ; \(\int_{-1}^2xe^{x^2/2}dx=[e^{x^2/2}]_{-1}^2=e^2-e^{1/2}\).</div>
+<div class="b"><b>1.2 Propriétés</b> a) Linéarité : \(\int_a^b(\alpha f+\beta g)=\alpha\int_a^bf+\beta\int_a^bg\). b) Si \(f\le g\) sur \([a,b]\) : \(\int_a^bf\le\int_a^bg\). c) Chasles : \(\int_a^bf=\int_a^cf+\int_c^bf\), \(c\in[a,b]\).<br>
+Ex : \(\int_1^2\left(\sqrt x-\frac1{\sqrt x}\right)dx=\left[\tfrac23x^{3/2}\right]_1^2-\left[2\sqrt x\right]_1^2=\frac43-\frac{2^{3/2}}3=\frac{4-2\sqrt2}3\). Remarques : \(\int_a^af=0\) ; \(\int_a^bf=-\int_b^af\).</div>
+<div class="b"><b>1.3 Intégration par parties</b> \(U,V\) continues sur \([a,b]\) de dérivées continues : \[\int_a^bU(x)V'(x)dx=\big[U(x)V(x)\big]_a^b-\int_a^bU'(x)V(x)dx.\]
+Ex : \(\int_1^2\ln x\,dx=[x\ln x]_1^2-\int_1^21\,dx=2\ln2-1\) ; \(\int_0^1xe^xdx=[xe^x]_0^1-[e^x]_0^1=1\) ; \(\int_0^1\frac x{\sqrt{1+x}}dx=\big[2x\sqrt{1+x}\big]_0^1-\int_0^1 2\sqrt{1+x}\,dx=\big[2x\sqrt{1+x}\big]_0^1-\big[2\cdot\tfrac23(1+x)^{3/2}\big]_0^1=\frac43-\frac{2\sqrt2}3\).</div>
+<div class="b e"><b>1.4 Changement de variable</b> \(\varphi:[a,b]\to\R\) continue, dérivable, strictement monotone, \(\varphi'\) continue ; \(f:[\varphi(a),\varphi(b)]\to\R\) continue : \[\int_a^b(f\circ\varphi)(t)\varphi'(t)dt=\int_{\varphi(a)}^{\varphi(b)}f(x)dx.\]
+Ex : \(I=\int_0^1\sqrt{1-x^2}dx\), \(x=\varphi(t)=\sin t\), \(\varphi:[0,\pi/2]\to[0,1]\), \(dx=\cos t\,dt\), \(\varphi^{-1}(0)=0\), \(\varphi^{-1}(1)=\pi/2\) : \[I=\int_0^{\pi/2}\sqrt{1-\sin^2t}\cos t\,dt=\int_0^{\pi/2}\cos^2t\,dt=\int_0^{\pi/2}\frac{1+\cos2t}2dt=\left[\frac t2+\frac{\sin2t}4\right]_0^{\pi/2}=\frac\pi4.\]</div>
+<div class="b"><b>1.5 Exercice</b> \(I=\int_0^{1/4}\frac1{\sqrt{1-2x}}dx\) ; \(J=\int_0^{\pi/2}\cos^3x\,dx\) ; \(K=\int_0^{\pi/2}\cos^2x\sin^3x\,dx\) ; \(L=\int_1^2\frac{1-\sqrt x}{1+\sqrt x}dx\) ; \(M=\int_0^1\frac1{1+\exp(x)}dx\).</div>
+<h3>2 Intégrales impropres de première espèce</h3><div class="b"><b>2.1.1 Définitions</b> \(\int_a^bf(t)dt\) est impropre (généralisée) de 1ʳᵉ espèce si \(a=-\infty\) ou \(b=+\infty\) ou les deux. \[\int_a^{+\infty}f=\lim_{b\to+\infty}\int_a^bf\ ;\qquad\int_{-\infty}^bf=\lim_{a\to-\infty}\int_a^bf.\] Si ces limites existent et sont finies : convergentes, sinon divergentes.<br>
+Ex : \(I=\int_1^{+\infty}\frac1{t^2}dt=\lim_{x\to+\infty}\left[-\frac1t\right]_1^x=1\) converge ; \(J=\int_1^{+\infty}\frac1tdt=\lim_{x\to+\infty}[\ln t]_1^x=+\infty\) diverge.</div>
+<div class="b"><b>2.1.2–2.1.4</b> Si \(\int_a^{+\infty}f\) et \(\int_a^{+\infty}g\) convergent, alors \(\int_a^{+\infty}(\alpha f+\beta g)=\alpha\int f+\beta\int g\) converge. Remarques : 1. \(\forall\alpha\ne0\), \(I\) et \(\alpha I\) de même nature. 2. \(I\) converge et \(J\) diverge ⇒ \(I+J\) diverge ; \(I,J\) divergent ⇒ on ne peut pas conclure. Pour \(f\) à valeurs complexes : \(\int f\) converge \(\iff\int\mathrm{Re}f\) et \(\int\mathrm{Im}f\) convergent (idem sur \(]-\infty,b]\).<br><i>Exercice</i> : nature de \(\int_{-\infty}^{+\infty}\frac1{1+x^2}dx\).</div>
+<div class="b e"><b>2.2 Intégrales de référence</b> (\(\alpha\in\R\), \(a>0\)) a) \(\int_0^{+\infty}\exp(-\alpha t)dt\) converge si \(\alpha>0\), diverge si \(\alpha\le0\). b) \(\int_a^{+\infty}\frac1{t^\alpha}dt\) converge si \(\alpha>1\), diverge si \(\alpha\le1\).</div>
+<div class="b"><b>2.3 Fonctions à signe constant</b> Si \(f\le0\), on étudie \(-f\ge0\). <b>Comparaison</b> : \(0\le f\le g\) sur \([a,+\infty[\) : si \(\int g\) converge alors \(\int f\) converge ; si \(\int f\) diverge alors \(\int g\) diverge. Ex : \(\int_0^{+\infty}\frac1{e^t+1}dt\) ; \(\int_2^{+\infty}\frac1{\ln t}dt\).<br>
+<b>Riemann</b> : \(\lim_{x\to+\infty}x^\alpha f(x)=l\). Si \(\alpha>1\) et \(l\in\R\) : converge. Si \(\alpha\le1\) et \(l\ne0\) (même infinie) : diverge. Ex : \(\int_1^{+\infty}\frac1{(x+1)(x+2)}dx\) ; \(\int_1^{+\infty}\exp(-t^2)dt\) ; \(\int_1^{+\infty}\frac{\ln t}{1+t^2}dt\).</div>
+<div class="b"><b>2.4 Convergence absolue</b> \(\int_a^{+\infty}f\) absolument convergente si \(\int_a^{+\infty}|f|\) converge ; alors elle converge et \(\left|\int_a^{+\infty}f\right|\le\int_a^{+\infty}|f|\). Ex : nature de \(\int_1^{+\infty}\frac{\cos t}{1+t^2}dt\).</div>
+</section>
 
 <section id="prim"><h2>8 · Primitives usuelles</h2>
-<div class="s"><table><tr><th>f(x)</th><th>Primitive</th><th>Validité</th></tr>
-<tr><td>xⁿ (n∈ℕ)</td><td>xⁿ⁺¹/(n+1)</td><td>ℝ</td></tr>
-<tr><td>xᵖ (p∈ℤ∖{−1})</td><td>xᵖ⁺¹/(p+1)</td><td>]−∞,0[ ou ]0,+∞[</td></tr>
-<tr><td>x^q (q∈ℝ∖{−1})</td><td>x^{q+1}/(q+1)</td><td>]0,+∞[</td></tr>
-<tr><td>u′uⁿ</td><td>uⁿ⁺¹/(n+1)</td><td>selon D_u</td></tr>
-<tr><td>u′/uⁿ (n≠1)</td><td>−1/((n−1)uⁿ⁻¹)</td><td>selon D_u</td></tr>
-<tr><td>1/x² ; u′/u²</td><td>−1/x ; −1/u</td><td>]−∞,0[ ou ]0,+∞[ ; {x∈D_u ; u(x)≠0}</td></tr>
-<tr><td>1/√x ; u′/√u</td><td>2√x ; 2√u</td><td>]0,+∞[</td></tr>
-<tr><td>1/x ; u′/u</td><td>ln|x| ; ln|u|</td><td>]−∞,0[ ou ]0,+∞[ ; {x∈D_u ; u(x)≠0}</td></tr>
-<tr><td>eˣ ; aˣ ; u′e^u</td><td>eˣ ; aˣ/ln a ; e^u</td><td>ℝ ; ℝ ; D_u</td></tr>
-<tr><td>sin x ; cos x</td><td>−cos x ; sin x</td><td>ℝ</td></tr>
-<tr><td>tan x ; cot x</td><td>−ln|cos x| ; ln|sin x|</td><td>]−π/2,π/2[+πℤ ; ]0,π[+πℤ</td></tr>
-<tr><td>sin²x ; cos²x</td><td>(2x−sin2x)/4 ; (2x+sin2x)/4</td><td>ℝ</td></tr>
-<tr><td>1/sin²x ; 1/cos²x</td><td>−cot x ; tan x</td><td>]0,π[+πℤ ; ]−π/2,π/2[+πℤ</td></tr>
-<tr><td>sh x ; ch x ; th x</td><td>ch x ; sh x ; ln(ch x)</td><td>ℝ</td></tr>
-<tr><td>coth x ; 1/sh²x ; 1/ch²x</td><td>ln|sh x| ; −coth x ; th x</td><td>]−∞,0[ ou ]0,+∞[ ; ]−∞,0[ ou ]0,+∞[ ; ℝ</td></tr>
-<tr><td>1/(a²−x²)</td><td>(1/2a)ln|(a+x)/(a−x)|</td><td>]−∞,−a[ ou ]−a,a[ ou ]a,+∞[</td></tr>
-<tr><td>1/(1+x²) ; 1/(a²+x²)</td><td>arctan x ; (1/a)arctan(x/a)</td><td>ℝ</td></tr>
-<tr><td>1/(x−a)ⁿ (n≠1) ; 1/(x−a)</td><td>−1/((n−1)(x−a)ⁿ⁻¹) ; ln|x−a|</td><td>]a,+∞[ ; ]−∞,a[ ou ]a,+∞[</td></tr>
-<tr><td>1/√(a²−x²)</td><td>arcsin(x/a)</td><td>]−a,a[</td></tr>
-<tr><td>x/√(x²−1)</td><td>√(x²−1)</td><td>]−∞,−1[ ou ]1,+∞[</td></tr>
-<tr><td>1/√(a²+x²) ; 1/√(x²−a²)</td><td>ln(x+√(a²+x²)) ; ln|x+√(x²−a²)|</td><td>ℝ ; ]−∞,−a[ ou ]a,+∞[</td></tr></table></div>
-<p><b>Complexes</b> (α∈ℂ∖ℝ, p∈ℤ∖{0,−1}) : e^{αx} → e^{αx}/α ; 1/(x−α) → ln|x−α|+i·arctan((x−Re α)/Im α) ; (x−α)ᵖ → (x−α)ᵖ⁺¹/(p+1).</p></section>
+<div class="s"><table><tr><th>Fonction</th><th>Primitive</th><th>Domaine de validité</th></tr>
+<tr><td>\(x\mapsto x^n\ (n\in\N)\)</td><td>\(x\mapsto \frac{x^{n+1}}{n+1}\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto x^p\ (p\in\Z\setminus\{-1\})\)</td><td>\(x\mapsto \frac{x^{p+1}}{p+1}\)</td><td>\(]-\infty,0[\text{ ou }]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto x^q\ (q\in\R\setminus\{-1\})\)</td><td>\(x\mapsto \frac{x^{q+1}}{q+1}\)</td><td>\(]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto u'(x)[u(x)]^n\)</td><td>\(x\mapsto \frac1{n+1}[u(x)]^{n+1}\)</td><td>\(\text{selon }D_u\)</td></tr>
+<tr><td>\(x\mapsto \frac{u'(x)}{[u(x)]^n}\ (n\ne1)\)</td><td>\(x\mapsto \frac{-1}{n-1}\frac1{[u(x)]^{n-1}}\)</td><td>\(\text{selon }D_u\)</td></tr>
+<tr><td>\(x\mapsto \frac1{x^2}\)</td><td>\(x\mapsto -\frac1x\)</td><td>\(]-\infty,0[\text{ ou }]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac{u'}{u^2}\)</td><td>\(x\mapsto \frac{-1}{u}\)</td><td>\(\{x\in D_u;u(x)\ne0\}\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\sqrt x}\)</td><td>\(x\mapsto 2\sqrt x\)</td><td>\(]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac{u'}{\sqrt u}\)</td><td>\(x\mapsto 2\sqrt u\)</td><td>\(]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1x\)</td><td>\(x\mapsto \ln|x|\)</td><td>\(]-\infty,0[\text{ ou }]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac{u'}u\)</td><td>\(x\mapsto \ln|u|\)</td><td>\(\{x\in D_u;u(x)\ne0\}\)</td></tr>
+<tr><td>\(x\mapsto e^x\)</td><td>\(x\mapsto e^x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto a^x\)</td><td>\(x\mapsto \frac{a^x}{\ln a}\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto u'e^u\)</td><td>\(x\mapsto e^u\)</td><td>\(D_u\)</td></tr>
+<tr><td>\(x\mapsto \sin x\)</td><td>\(x\mapsto -\cos x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \cos x\)</td><td>\(x\mapsto \sin x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \tan x\)</td><td>\(x\mapsto -\ln|\cos x|\)</td><td>\(]-\frac\pi2,\frac\pi2[+\pi\Z\)</td></tr>
+<tr><td>\(x\mapsto \cot x\)</td><td>\(x\mapsto \ln|\sin x|\)</td><td>\(]0,\pi[+\pi\Z\)</td></tr>
+<tr><td>\(x\mapsto \sin^2x\)</td><td>\(x\mapsto \frac{2x-\sin2x}4\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \cos^2x\)</td><td>\(x\mapsto \frac{2x+\sin2x}4\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\sin^2x}\)</td><td>\(x\mapsto -\cot x\)</td><td>\(]0,\pi[+\pi\Z\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\cos^2x}\)</td><td>\(x\mapsto \tan x\)</td><td>\(]-\frac\pi2,\frac\pi2[+\pi\Z\)</td></tr>
+<tr><td>\(x\mapsto \operatorname{sh} x\)</td><td>\(x\mapsto \operatorname{ch} x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \operatorname{ch} x\)</td><td>\(x\mapsto \operatorname{sh} x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \operatorname{th} x\)</td><td>\(x\mapsto \ln(\operatorname{ch} x)\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \operatorname{coth} x\)</td><td>\(x\mapsto \ln|\operatorname{sh} x|\)</td><td>\(]-\infty,0[\text{ ou }]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\operatorname{sh}^2x}\)</td><td>\(x\mapsto -\operatorname{coth} x\)</td><td>\(]-\infty,0[\text{ ou }]0,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\operatorname{ch}^2x}\)</td><td>\(x\mapsto \operatorname{th} x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \frac1{a^2-x^2}\)</td><td>\(x\mapsto \frac1{2a}\ln\left|\frac{a+x}{a-x}\right|\)</td><td>\(]-\infty,-a[\text{ ou }]-a,a[\text{ ou }]a,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{1+x^2}\)</td><td>\(x\mapsto \arctan x\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \frac1{a^2+x^2}\)</td><td>\(x\mapsto \frac1a\arctan\frac xa\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \frac1{(x-a)^n}\ (n\ne1)\)</td><td>\(x\mapsto \frac{-1}{n-1}\frac1{(x-a)^{n-1}}\)</td><td>\(]a,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{x-a}\)</td><td>\(x\mapsto \ln|x-a|\)</td><td>\(]-\infty,a[\text{ ou }]a,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\sqrt{a^2-x^2}}\)</td><td>\(x\mapsto \arcsin\frac xa\)</td><td>\(]-a,a[\)</td></tr>
+<tr><td>\(x\mapsto \frac x{\sqrt{x^2-1}}\)</td><td>\(x\mapsto \sqrt{x^2-1}\)</td><td>\(]-\infty,-1[\text{ ou }]1,+\infty[\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\sqrt{a^2+x^2}}\)</td><td>\(x\mapsto \ln\left(x+\sqrt{a^2+x^2}\right)\)</td><td>\(\R\)</td></tr>
+<tr><td>\(x\mapsto \frac1{\sqrt{x^2-a^2}}\)</td><td>\(x\mapsto \ln\left|x+\sqrt{x^2-a^2}\right|\)</td><td>\(]-\infty,-a[\text{ ou }]a,+\infty[\)</td></tr>
+</table></div>
+<p><b>Primitives complexes</b> (\(\alpha\in\C\setminus\R\), \(p\in\Z\setminus\{0,-1\}\) ; fonctions définies sur \(\R\)) : \(e^{\alpha x}\to\frac1\alpha e^{\alpha x}\) ; \(\frac1{x-\alpha}\to\ln|x-\alpha|+i\arctan\left(\frac{x-\mathrm{Re}(\alpha)}{\mathrm{Im}(\alpha)}\right)\) ; \((x-\alpha)^p\to\frac1{p+1}(x-\alpha)^{p+1}\).</p></section>
 
 <section id="tr"><h2>9 · Annexes</h2>
-<h3>Trigonométrie</h3>
-<div class="b">cos, sin : ℝ, 2π-périodiques. tan : ℝ∖{π/2+πℤ}, π-périodique.<br><b>Arcs associés</b> cos(−x)=cos x ; sin(−x)=−sin x ; cos(x+π)=−cos x ; sin(x+π)=−sin x ; cos(π−x)=−cos x ; sin(π−x)=sin x ; cos(π/2−x)=sin x ; sin(π/2−x)=cos x ; cos(π/2+x)=−sin x ; sin(π/2+x)=cos x.</div>
-<div class="b"><b>Addition</b> cos(a±b)=cos a cos b ∓ sin a sin b ; sin(a±b)=sin a cos b ± cos a sin b ; tan(a±b)=(tan a ± tan b)/(1 ∓ tan a tan b).<br><b>Duplication</b> cos2a=cos²a−sin²a=2cos²a−1=1−2sin²a ; sin2a=2sin a cos a ; tan2a=2tan a/(1−tan²a). <b>Linéarisation</b> cos²a=(1+cos2a)/2 ; sin²a=(1−cos2a)/2.</div>
-<div class="b"><b>Produits</b> cos a cos b=½[cos(a+b)+cos(a−b)] ; sin a sin b=½[cos(a−b)−cos(a+b)] ; sin a cos b=½[sin(a+b)+sin(a−b)].<br><b>Sommes</b> cos a+cos b=2cos((a+b)/2)cos((a−b)/2) ; cos a−cos b=−2sin((a+b)/2)sin((a−b)/2) ; sin a+sin b=2sin((a+b)/2)cos((a−b)/2) ; sin a−sin b=2cos((a+b)/2)sin((a−b)/2).</div>
-<h3>Hyperboliques</h3>
-<div class="b">ch=(eˣ+e⁻ˣ)/2 ; sh=(eˣ−e⁻ˣ)/2 ; th=sh/ch ; coth=ch/sh (x≠0). ch²−sh²=1 ; (ch x+sh x)ⁿ=ch nx+sh nx.<br>ch(x+y)=ch x ch y+sh x sh y ; sh(x+y)=sh x ch y+ch x sh y ; th(x+y)=(th x+th y)/(1+th x th y).<br>ch2x=ch²x+sh²x=2ch²x−1=2sh²x+1 ; sh2x=2ch x sh x ; th2x=2th x/(1+th²x).<br>ch²x=(ch2x+1)/2 ; sh²x=(ch2x−1)/2 ; th²x=(ch2x−1)/(ch2x+1).<br>ch(x+y)+ch(x−y)=2ch x ch y ; ch(x+y)−ch(x−y)=2sh x sh y ; sh(x+y)+sh(x−y)=2sh x ch y ; sh(x+y)−sh(x−y)=2ch x sh y.</div></section>
+<h3>Annexe 1 — Formules trigonométriques</h3><div class="b"><b>Périodicité</b> \(\cos,\sin\) définies sur \(\R\), \(2\pi\)-périodiques. \(\tan\) définie sur \(\R\setminus\{\frac\pi2+\pi\Z\}\), \(\pi\)-périodique.</div>
+<div class="b"><b>Arcs associés</b> \[\begin{array}{lll}\cos(x+2\pi)=\cos x&\cos(-x)=\cos x&\cos(x+\pi)=-\cos x\\\sin(x+2\pi)=\sin x&\sin(-x)=-\sin x&\sin(x+\pi)=-\sin x\\\cos(\pi-x)=-\cos x&\cos(\frac\pi2-x)=\sin x&\cos(\frac\pi2+x)=-\sin x\\\sin(\pi-x)=\sin x&\sin(\frac\pi2-x)=\cos x&\sin(\frac\pi2+x)=\cos x\end{array}\]</div>
+<div class="b"><b>Addition</b> \[\begin{aligned}\cos(a\pm b)&=\cos a\cos b\mp\sin a\sin b\\\sin(a\pm b)&=\sin a\cos b\pm\cos a\sin b\\\tan(a\pm b)&=\frac{\tan a\pm\tan b}{1\mp\tan a\tan b}\end{aligned}\]
+En particulier : \(\cos2a=\cos^2a-\sin^2a=2\cos^2a-1=1-2\sin^2a\) ; \(\sin2a=2\sin a\cos a\) ; \(\tan2a=\dfrac{2\tan a}{1-\tan^2a}\).<br>Linéarisation : \(\cos^2a=\dfrac{1+\cos2a}2\), \(\sin^2a=\dfrac{1-\cos2a}2\).</div>
+<div class="b e"><b>Factorisation</b> \[\cos a\cos b=\tfrac12[\cos(a+b)+\cos(a-b)],\quad\sin a\sin b=\tfrac12[\cos(a-b)-\cos(a+b)],\quad\sin a\cos b=\tfrac12[\sin(a+b)+\sin(a-b)]\]
+\[\cos a+\cos b=2\cos\tfrac{a+b}2\cos\tfrac{a-b}2,\ \ \cos a-\cos b=-2\sin\tfrac{a+b}2\sin\tfrac{a-b}2\]\[\sin a+\sin b=2\sin\tfrac{a+b}2\cos\tfrac{a-b}2,\ \ \sin a-\sin b=2\cos\tfrac{a+b}2\sin\tfrac{a-b}2\]</div>
+<h3>Annexe 2 — Fonctions hyperboliques</h3><div class="b"><b>Définitions</b> \(x\in\R\) : \(\ch x=\dfrac{e^x+e^{-x}}2\), \(\sh x=\dfrac{e^x-e^{-x}}2\), \(\th x=\dfrac{\sh x}{\ch x}\) ; \(x\in\R^*\) : \(\coth x=\dfrac1{\th x}=\dfrac{\ch x}{\sh x}\).<br>Identité : \(\ch^2x-\sh^2x=1\). Puissance : \((\ch x+\sh x)^n=\ch(nx)+\sh(nx)\), \(n\in\N\).</div>
+<div class="b"><b>Addition</b> \[\ch(x+y)=\ch x\ch y+\sh x\sh y,\quad\sh(x+y)=\sh x\ch y+\ch x\sh y,\quad\th(x+y)=\frac{\th x+\th y}{1+\th x\th y}\]
+\(\ch2x=\ch^2x+\sh^2x=2\ch^2x-1=2\sh^2x+1\) ; \(\sh2x=2\ch x\sh x\) ; \(\th2x=\dfrac{2\th x}{1+\th^2x}\).<br>Linéarisation : \(\ch^2x=\dfrac{\ch2x+1}2\), \(\sh^2x=\dfrac{\ch2x-1}2\), \(\th^2x=\dfrac{\ch2x-1}{\ch2x+1}\).</div>
+<div class="b e"><b>Factorisation</b> \[\ch(x+y)+\ch(x-y)=2\ch x\ch y,\quad\ch(x+y)-\ch(x-y)=2\sh x\sh y\]\[\sh(x+y)+\sh(x-y)=2\sh x\ch y,\quad\sh(x+y)-\sh(x-y)=2\ch x\sh y\]</div>
+</section>
 
 <section id="quiz"><h2>10 · Quiz</h2><div id="q"></div></section>
 </main>
