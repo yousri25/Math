@@ -28,8 +28,9 @@ table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid var(--ln);pad
 <p class="m">Algèbre I (Ch.1–3) et Analyse I (Ch.1–3, annexes 1–2, primitives usuelles) : tout le cours au même endroit.</p>
 
 <section id="log"><h2>1 · Logique</h2>
+<div class="b"><b>Introduction</b> La logique est un outil fondamental des mathématiques : elle structure la pensée et permet d'établir des conclusions à partir d'hypothèses précises. Le raisonnement repose sur des règles pour construire, vérifier et enchaîner des arguments de manière rigoureuse. Ce chapitre étudie les concepts de logique et les modes de raisonnement et de démonstration.</div>
 <div class="b"><b>Proposition</b> Phrase soit vraie, soit fausse, pas les deux. Ex : 2+2=4 (V) ; 2×3=7 (F) ; ∀x∈ℝ, x²≥0 (V) ; ∀z∈ℂ, |z|=1 (F).</div>
-<div class="b"><b>Négation</b> Non P est vraie ssi P est fausse. Non(∀z, |z|=1) : ∃z∈ℂ, |z|≠1 (vraie).</div>
+<div class="b"><b>Négation</b> Non P est vraie ssi P est fausse. Non P₁ : 2+2≠4 (F) ; Non P₂ : 2×3≠7 (V) ; Non P₃ : ∃x∈ℝ, x²&lt;0 (F) ; Non P₄ : ∃z∈ℂ, |z|≠1 (V). (P₁ : 2+2=4 ; P₂ : 2×3=7 ; P₃ : ∀x∈ℝ, x²≥0 ; P₄ : ∀z∈ℂ, |z|=1.)</div>
 <div class="b"><b>« P et Q »</b> vraie si P et Q le sont toutes deux. <b>« P ou Q »</b> fausse seulement si P et Q sont fausses.</div>
 <div class="b"><b>Implication P ⇒ Q</b> := « Non P ou Q ». Si vraie : P condition suffisante pour Q ; Q condition nécessaire pour P.</div>
 <div class="b"><b>Équivalence P ⇔ Q</b> := (P ⇒ Q) et (Q ⇒ P) : condition nécessaire et suffisante.</div>
@@ -49,57 +50,65 @@ table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid var(--ln);pad
 <div class="b"><b>Contraposée</b> Montrer Non Q ⇒ Non P. Ex : n² pair ⇒ n pair.</div>
 <div class="b"><b>Absurde</b> On suppose P vraie et Q fausse, on cherche une contradiction. Ex : a,b≥0, a/(1+b)=b/(1+a) ⇒ a=b. Contraposée ou absurde : bien préciser, ne pas changer en cours de rédaction.</div>
 <div class="b"><b>Contre-exemple</b> Pour réfuter ∀x, P(x) il suffit d'un x où P est fausse. Ex : « tout entier positif est somme de trois carrés » est fausse.</div>
-<div class="b e"><b>Récurrence</b> 1) Initialisation : P(0) (ou P(n₀) si n≥n₀). 2) Hérédité : P(n) ⇒ P(n+1). 3) Conclusion. <b>Double</b> : P(0),P(1) puis P(n),P(n+1) ⇒ P(n+2). <b>Forte</b> : P(0) puis P(1..n) ⇒ P(n+1). Ex : 2ⁿ&gt;n ; U₀=0, U₁=1, Uₙ₊₂=2Uₙ₊₁−Uₙ ⇒ Uₙ=n.</div></section>
+<div class="b e"><b>Récurrence</b> 1) Initialisation : P(0) (ou P(n₀) si n≥n₀). 2) Hérédité : P(n) ⇒ P(n+1). 3) Conclusion. <b>Double</b> : P(0),P(1) puis P(n),P(n+1) ⇒ P(n+2). <b>Forte</b> : P(0) puis P(1..n) ⇒ P(n+1). Ex : 2ⁿ&gt;n ; si on démontre une propriété pour tout n≥n₀ (n₀≥1), l'initialisation commence au rang n₀ ; ces formes (double, forte) sont équivalentes à la récurrence ordinaire ; U₀=0, U₁=1, Uₙ₊₂=2Uₙ₊₁−Uₙ ⇒ Uₙ=n.</div></section>
 
 <section id="ev"><h2>3 · Espaces vectoriels</h2>
 <p>K = ℝ ou ℂ. E muni de + (interne) et · (externe, K×E→E).</p>
 <div class="b"><b>K-ev</b> 1) (E,+) groupe abélien : associatif, commutatif, neutre 0_E, symétrique −x. 2) ∀λ,µ∈K : λ(x+y)=λx+λy ; (λ+µ)x=λx+µx ; λ(µx)=(λµ)x ; 1·x=x. Ex : ℝ, ℝ² et ℂ sont des ℝ-ev.</div>
-<div class="b"><b>Sous-espace F ⊂ E</b> ssi i) 0_E∈F ii) X+Y∈F iii) αX∈F. Ex : {0}×ℝ, {x−y=0} sont des sev de ℝ² ; H={(x,2x+1)} n'en est pas un (0∉H).</div>
+<div class="b"><b>Vocabulaire</b> Éléments de K : scalaires ; éléments de E : vecteurs ; neutre noté 0_E (vecteur nul) ; symétrique de x noté −x.</div>
+<div class="b"><b>Sous-espace F ⊂ E</b> (F non vide, (F,+,×) lui-même K-ev) ssi i) 0_E∈F ii) X+Y∈F iii) αX∈F. Ex : {0}×ℝ, {x−y=0} sont des sev de ℝ² ; H={(x,2x+1)} n'en est pas un (0∉H). {0_E} est un sev de E.</div>
 <div class="b"><b>Combinaison linéaire</b> x=Σαᵢxᵢ ; elles forment un sev. Ex : (2,−3,0)=2(1,0,0)−3(0,1,0).</div>
-<div class="b"><b>Génératrice</b> Tout vecteur est c.l. des xᵢ ; E=⟨x₁..xₙ⟩. Dimension finie : il existe une famille génératrice finie.</div>
+<div class="b"><b>Génératrice</b> Tout vecteur est c.l. des xᵢ ; E=⟨x₁..xₙ⟩. Ex : {(1,0),(0,1)} génère ℝ². Dimension finie : il existe une famille génératrice finie.</div>
 <div class="b"><b>Libre</b> Σαᵢxᵢ=0 ⇒ tous αᵢ=0 ; sinon liée. {(1,1,0),(0,1,1)} libre ; {(1,0,0),(0,1,0),(1,1,0)} liée.</div>
 <div class="b"><b>Base</b> Libre et génératrice. Tout x s'écrit de façon unique Σλᵢeᵢ (coordonnées). Bases canoniques de ℝ², ℝ³.</div>
 <div class="b e"><b>Propriétés (dim E = n)</b> Existence d'une base ; toutes les bases ont n vecteurs ; libre à n vecteurs ⇒ base ; génératrice à n vecteurs ⇒ base ; libre ≤ n vecteurs ; génératrice ≥ n ; F sev ⇒ dim F ≤ dim E ; dim{0}=0.</div>
-<p><b>Exercices</b> : {3x−2y=0}⊂ℝ², {x−3y+z=0}⊂ℝ³ (sev, génératrice, dim) ; {2x+3y+5z=0} ; (0,1,1),(1,0,1),(1,1,0) base de ℝ³ ; {e₁,e₂} libre non génératrice dans ℝ³ ; {e₁,e₂,e₃,(1,1,1)} génératrice non libre.</p></section>
+<div class="b e"><b>Exercice 1</b> 1) F={(x,y)∈ℝ² : x−y=0} est-il un sev de ℝ² ? 2) H={(x,2x+1)} est-il un sev de ℝ² ?</div>
+<div class="b e"><b>Exercice 2</b> 1) F={(x,y)∈ℝ² : 3x−2y=0} : a) montrer que F est un sev ; b) famille génératrice de F ; c) F est-il de dimension finie ? 2) Mêmes questions pour G={(x,y,z)∈ℝ³ : x−3y+z=0}.</div>
+<div class="b e"><b>Exercice 3</b> x₁=(0,1,1), x₂=(1,0,1), x₃=(1,1,0) : montrer que {x₁,x₂,x₃} est une base de ℝ³.</div>
+<div class="b e"><b>Exercice 4</b> 1) {(1,0,0),(0,1,0)} est libre dans ℝ³ ; est-elle génératrice ? 2) {(1,0,0),(0,1,0),(0,0,1),(1,1,1)} est génératrice de ℝ³ ; est-elle libre ?</div>
+<div class="b e"><b>Exercice 5</b> F={(x,y,z)∈ℝ³ : 2x+3y+5z=0} : 1) montrer que F est un sev de ℝ³ ; 2) déterminer dim F.</div>
+</section>
 
 <section id="mat"><h2>4 · Calcul matriciel</h2>
 <div class="b"><b>Matrice</b> A=(aᵢⱼ)∈Mₙ,ₚ(K) : n lignes, p colonnes. Particulières : nulle, carrée Mₙ(K), triangulaire sup. (aᵢⱼ=0 si j&lt;i), inf. (aᵢⱼ=0 si i&lt;j), diagonale, identité Iₙ.</div>
-<div class="b"><b>Somme</b> (même taille) cᵢⱼ=aᵢⱼ+bᵢⱼ. <b>Produit par λ</b> : dᵢⱼ=λaᵢⱼ. Propriétés : A+B=B+A, (A+B)+C=A+(B+C), A+0=A, (α+β)A=αA+βA, α(A+B)=αA+αB.</div>
+<div class="b"><b>Exemples</b> A=[[0,1,2],[4,12,1],[3,5,2],[9,7,6]]∈M₄,₃(ℝ) ; B=[[1,2,3,4],[0,10,9,7],[4,6,8,1]]∈M₃,₄(ℝ) ; diagonale [[1,0,0],[0,2,0],[0,0,3]]∈M₃(ℝ) ; I₂=[[1,0],[0,1]] ; triangulaire sup. [[1,0,9],[0,0,√3],[0,0,1]] ; triangulaire inf. [[1,0,0],[1,2,0],[1,0,1]]. Les aᵢⱼ sont les coefficients de A ; Mₙ,ₚ(K) = ensemble des matrices à n lignes et p colonnes.</div>
+<div class="b"><b>Somme</b> (même taille) cᵢⱼ=aᵢⱼ+bᵢⱼ. <b>Produit par λ</b> : dᵢⱼ=λaᵢⱼ. Propriétés : A+B=B+A, (A+B)+C=A+(B+C), A+0=A, (α+β)A=αA+βA, α(A+B)=αA+αB.<br>Ex : [[1,2,3],[4,5,6]]+[[4,10,9],[7,8,0]]=[[5,12,12],[11,13,6]] ; 2·[[4,3,2],[1,5,4]]=[[8,6,4],[2,10,8]]. La somme n'est définie que pour deux matrices de même taille.</div>
 <div class="b"><b>Produit</b> A∈Mₙ,ₚ, B∈Mₚ,q : cᵢⱼ=Σₖ₌₁ᵖ aᵢₖbₖⱼ, C∈Mₙ,q. Défini si #colonnes(A)=#lignes(B). Non commutatif. Si AB=BA : (A+B)ⁿ=Σₖ₌₀ⁿ C(n,k)AᵏBⁿ⁻ᵏ. (AB)C=A(BC), A(B+C)=AB+AC, (A+B)C=AC+BC, A0=0A=0, IₙA=A=AIₚ.<br>Ex : [[1,2],[0,−1],[5,3]]·[[1,−2,0,3,0],[−7,0,2,1,0]] = [[−13,−2,4,5,0],[7,0,−2,−1,0],[−16,−10,6,18,0]].</div>
-<div class="b"><b>Transposée</b> ᵗA∈Mₚ,ₙ de terme aⱼᵢ. ᵗ(A+B)=ᵗA+ᵗB ; ᵗ(λA)=λᵗA ; ᵗ(ᵗA)=A ; (ᵗA)ᵏ=ᵗ(Aᵏ).</div>
+<div class="b"><b>Transposée</b> ᵗA∈Mₚ,ₙ de terme aⱼᵢ. ᵗ(A+B)=ᵗA+ᵗB ; ᵗ(λA)=λᵗA ; ᵗ(ᵗA)=A ; (ᵗA)ᵏ=ᵗ(Aᵏ) (k∈ℕ, A carrée). Ex : ᵗ[[2,1,5],[3,−1,0]]=[[2,3],[1,−1],[5,0]].</div>
 <h3>Déterminant (A∈Mₙ(K))</h3>
 <div class="b">n=1 : det(a)=a. n≥2 : det A=Σᵢ aᵢ₁(−1)ⁱ⁺¹det(Aᵢ₁) (Aᵢ₁ : ligne i et colonne 1 enlevées). 2×2 : det[[a,b],[c,d]]=ad−bc ; det[[1,2,3],[4,5,6],[7,8,9]]=0. Ligne ou colonne nulle ⇒ det=0. Diagonale ou triangulaire : produit des aᵢᵢ.<br>det(AB)=det A·det B ; det(λA)=λⁿdet A ; det A=det ᵗA.</div>
 <h3>Inverse</h3>
-<div class="b">A inversible s'il existe B : AB=BA=Iₙ (B=A⁻¹). (A⁻¹)⁻¹=A ; (λA)⁻¹=λ⁻¹A⁻¹ ; (AC)⁻¹=C⁻¹A⁻¹.<br><b>Cofacteur</b> cᵢⱼ=(−1)ⁱ⁺ʲdet(Aᵢⱼ) ; com(A)=(cᵢⱼ). Ex : A=[[1,2],[3,4]] → com(A)=[[4,−3],[−2,1]].<br><b>Th.</b> A inversible ⇔ det A≠0, et alors A⁻¹=(1/det A)·ᵗcom(A).</div>
+<div class="b">A inversible s'il existe B : AB=BA=Iₙ (B=A⁻¹). (A⁻¹)⁻¹=A ; (λA)⁻¹=λ⁻¹A⁻¹ ; (AC)⁻¹=C⁻¹A⁻¹.<br><b>Cofacteur</b> cᵢⱼ=(−1)ⁱ⁺ʲdet(Aᵢⱼ) ; com(A)=(cᵢⱼ). Ex : A=[[1,2],[3,4]] → com(A)=[[4,−3],[−2,1]] (c₁₁=4, c₁₂=−3, c₂₁=−2, c₂₂=1 ; com(A) : chaque aᵢⱼ remplacé par cᵢⱼ).<br><b>Th.</b> A inversible ⇔ det A≠0, et alors A⁻¹=(1/det A)·ᵗcom(A).</div>
 <p><b>Exercices</b> : det de [[0,1,2],[1,1,2],[0,2,3]] et [[1,1,2],[1,2,1],[2,1,1]] ; inverses de [[2,−4],[−3,1]], [[0,1,2],[1,1,2],[0,2,3]], [[1,1,2],[1,2,1],[2,1,1]], [[1,2,3],[0,1,2],[−1,−4,−1]].</p></section>
 
 <section id="cx"><h2>5 · Nombres complexes</h2>
-<div class="b"><b>ℂ</b> contient ℝ et i (i²=−1) ; tout z s'écrit z=x+iy de façon unique ; pas de relation d'ordre. z=z′ ⇔ x=x′ et y=y′.</div>
-<div class="b"><b>Conjugué</b> z̄=x−iy. conj(z̄)=z ; conj(z+z′)=z̄+z̄′ ; conj(zz′)=z̄z̄′ ; conj(1/z′)=1/z̄′ ; conj(z/z′)=z̄/z̄′ ; z̄=z⇔z∈ℝ ; z̄=−z⇔z∈iℝ.<br>Re z=(z+z̄)/2 ; Im z=(z−z̄)/2i ; Re, Im linéaires sur ℝ.</div>
+<div class="b"><b>ℂ</b> contient ℝ et i (i²=−1) ; tout z s'écrit z=x+iy de façon unique ; pas de relation d'ordre (impossible d'en définir une compatible avec celle de ℝ et de mêmes propriétés) ; addition et multiplication de règles analogues à celles de ℝ. z=z′ ⇔ x=x′ et y=y′.</div>
+<div class="b"><b>Conjugué</b> z̄=x−iy. conj(z̄)=z ; conj(z+z′)=z̄+z̄′ ; conj(zz′)=z̄z̄′ ; conj(1/z′)=1/z̄′ ; conj(z/z′)=z̄/z̄′ ; z̄=z⇔z∈ℝ ; z̄=−z⇔z∈iℝ.<br>Re z=(z+z̄)/2 ; Im z=(z−z̄)/2i ; Re(z+z′)=Re z+Re z′ ; Im(z+z′)=Im z+Im z′ ; Re(λz)=λRe z ; Im(λz)=λIm z (λ∈ℝ). z=x+iy : forme algébrique, x=Re z, y=Im z.</div>
 <div class="b"><b>Module</b> |z|=√(x²+y²). |z|≥0 ; |z|=0⇔z=0 ; |z|²=zz̄ (si |z|=1 : z̄=1/z ; sinon 1/z=z̄/|z|²) ; |z̄|=|z| ; |zz′|=|z||z′| ; |z/z′|=|z|/|z′| ; |z+z′|≤|z|+|z′|.</div>
-<div class="b"><b>Argument</b> Mesure de (u,OM), défini modulo 2π, pas pour 0. arg(zz′)=arg z+arg z′ ; arg zⁿ=n·arg z ; arg(1/z)=arg z̄=−arg z ; arg(z/z′)=arg z−arg z′ ; arg(−z)=arg z+π [2π]. arg z=0[2π]⇔z∈ℝ*₊ ; =0[π]⇔z∈ℝ* ; =π/2[π]⇔z∈iℝ*. |z+z′|=|z|+|z′|⇔arg z=arg z′ [2π].</div>
-<div class="b e"><b>Euler</b> e^{iθ}=cosθ+i sinθ. e^{i(θ+θ′)}=e^{iθ}e^{iθ′} ; 1/e^{iθ}=e^{−iθ} ; (e^{iθ})ⁿ=e^{inθ} ; conj(e^{iθ})=e^{−iθ} ; e^{iθ}=1⇔θ∈2πℤ. Forme exponentielle z=re^{iθ}.</div>
+<div class="b"><b>Argument</b> Plan muni d'un repère orthonormé direct (O,u,v) ; z=x+iy non nul, M(x,y). Argument : mesure en radians de l'angle (u,OM), défini modulo 2π, pas pour 0. arg(zz′)=arg z+arg z′ ; arg zⁿ=n·arg z ; arg(1/z)=arg z̄=−arg z ; arg(z/z′)=arg z−arg z′ ; arg(−z)=arg z+π [2π]. arg z=0[2π]⇔z∈ℝ*₊ ; =0[π]⇔z∈ℝ* ; =π/2[π]⇔z∈iℝ*. |z+z′|=|z|+|z′|⇔arg z=arg z′ [2π].</div>
+<div class="b e"><b>Euler</b> e^{iθ}=cosθ+i sinθ. e^{i(θ+θ′)}=e^{iθ}e^{iθ′} ; 1/e^{iθ}=e^{−iθ} ; (e^{iθ})ⁿ=e^{inθ} ; conj(e^{iθ})=e^{−iθ} ; e^{iθ}=1⇔θ∈2πℤ. Pour z≠0 de module r et d'argument θ : z=r(cosθ+i sinθ) forme géométrique ; z=re^{iθ} forme exponentielle.</div>
 <div class="b"><b>Racines n-ièmes</b> Z=zⁿ ⇔ R=rⁿ et φ=nϕ [2π]. Les n racines de Z : R^{1/n}e^{i(φ/n+2kπ/n)}, k=0..n−1.</div>
 <p><b>Exercices</b> : résoudre 2z+6z̄=3+2i ; |z|≤k&lt;1 ⇒ 1−k≤|1+z|≤1+k ; forme exponentielle de 1+cosθ+i sinθ et ((1+i√3)/(1−i))²⁰ ; pour z∈ℂ∖{1}, z′=(z−1)/(1−z̄) : |z′|=1, (z′−1)/(z−1)∈ℝ, (z′+1)/(z−1)∈iℝ ; résoudre z²+z+1=0, z²+(5−2i)z+5−5i=0, z⁴−3iz²+4=0, ((z+i)/(z−i))³+((z+i)/(z−i))²+(z+i)/(z−i)+1=0 ; racines cubiques de 1+i√3.</p></section>
 
 <section id="fu"><h2>6 · Fonctions usuelles</h2>
-<div class="b"><b>ln</b> Primitive de 1/x sur ℝ*₊ nulle en 1 ; croissante ; ln(1+x)≤x (x&gt;−1). ln(ab)=ln a+ln b ; ln(1/a)=−ln a ; ln(a/b)=ln a−ln b ; ln(aʳ)=r ln a. Limites : ln→+∞ (+∞), →−∞ (0⁺), ln x/x→0, x ln x→0 (0⁺), ln x/(x−1)→1 (x→1), ln(1+x)/x→1 (x→0).</div>
-<div class="b"><b>exp</b> Réciproque de ln ; exp′=exp ; exp x≥x+1 ; exp(x+y)=exp x·exp y ; exp(−x)=1/exp x ; exp(x−y)=exp x/exp y ; (exp x)ʳ=exp(rx). Limites : +∞→+∞ ; −∞→0 ; exp x/x→+∞ ; x exp x→0 (−∞) ; (exp x−1)/x→1 (0).</div>
-<div class="b"><b>Puissances</b> Pα(x)=xᵅ=exp(α ln x), Pα′=αxᵅ⁻¹ ; croissante si α&gt;0, décroissante si α&lt;0. α&gt;0 : Pα(0)=0 (continue sur [0,+∞[) ; α&gt;1 : Pα′(0)=0 ; 0&lt;α&lt;1 : Pα′→+∞ en 0.</div>
+<div class="b"><b>ln</b> Unique primitive de x↦1/x sur ℝ*₊ qui s'annule en 1 ; infiniment dérivable, strictement croissante ; ln(1+x)≤x (x&gt;−1). ln(ab)=ln a+ln b ; ln(1/a)=−ln a ; ln(a/b)=ln a−ln b ; ln(aʳ)=r ln a (r∈ℚ, a,b&gt;0). Limites : ln→+∞ (+∞), →−∞ (0⁺), ln x/x→0, x ln x→0 (0⁺), ln x/(x−1)→1 (x→1), ln(1+x)/x→1 (x→0).</div>
+<div class="b"><b>exp</b> Nombre de Neper e : unique réel tel que ln e=1. exp réciproque de ln : y=exp x ⇔ x=ln y (x∈ℝ, y&gt;0) ; infiniment dérivable, strictement croissante ; ln(exp x)=x ; exp(ln x)=x (x&gt;0) ; exp 0=1 ; exp 1=e ; exp′=exp ; exp x≥x+1 ; exp(x+y)=exp x·exp y ; exp(−x)=1/exp x ; exp(x−y)=exp x/exp y ; (exp x)ʳ=exp(rx) (r∈ℚ). Limites : +∞→+∞ ; −∞→0 ; exp x/x→+∞ ; x exp x→0 (−∞) ; (exp x−1)/x→1 (0).</div>
+<div class="b"><b>Puissances</b> Pα(x)=xᵅ=exp(α ln x), Pα infiniment dérivable sur ℝ*₊, Pα′=αxᵅ⁻¹ ; P₀(0)=1 par prolongement ; croissante si α&gt;0, décroissante si α&lt;0. α&gt;0 : Pα(0)=0 (continue sur [0,+∞[) ; α&gt;1 : Pα′(0)=0 ; 0&lt;α&lt;1 : Pα′→+∞ en 0.</div>
 <div class="b"><b>Comparaisons</b> (ln x)ᵅ/xᵝ→0 (+∞) ; xᵅ|ln x|ᵝ→0 (0⁺) ; (exp x)ᵅ/xᵝ→+∞ ; |x|ᵅexp(βx)→0 (−∞) ; aˣ/xᵅ→+∞ (a&gt;1).</div>
-<div class="b"><b>Trigonométrie</b> sin′=cos, cos′=−sin ; cos²+sin²=1. tg=sin/cos sur ℝ∖{π/2+πℤ}, tg′=1/cos²=1+tg². cotg=cos/sin sur ℝ∖πℤ, cotg′=−1/sin²=−1−cotg². tg, cotg impaires, π-périodiques.</div>
-<div class="b e"><b>Réciproques</b><br>arcsin : [−1,1]→[−π/2,π/2], impaire, arcsin′=1/√(1−x²) sur ]−1,1[. sin(arcsin x)=x ; arcsin(sin x)=x sur [−π/2,π/2] (2π-périodique, impaire).<br>arccos : [−1,1]→[0,π], ni paire ni impaire, arccos′=−1/√(1−x²). arccos(cos x)=x sur [0,π] (2π-périodique, paire).<br>arctg : ℝ→]−π/2,π/2[, impaire, arctg′=1/(1+x²). arctg(tg x)=x sur ]−π/2,π/2[ (π-périodique, impaire).<br>Exercices : arcsin(sin x)=π/9 et sin(arcsin x)=π/9 ; arccos x+arcsin x=π/2 ; étudier arctg x+arctg(1/x).</div></section>
+<div class="b"><b>Trigonométrie</b> (sin, cos infiniment dérivables sur ℝ, sin impaire, cos paire, 2π-périodiques)  sin′=cos, cos′=−sin ; cos²+sin²=1. tg=sin/cos sur ℝ∖{π/2+πℤ}, tg′=1/cos²=1+tg². cotg=cos/sin sur ℝ∖πℤ, cotg′=−1/sin²=−1−cotg². tg, cotg impaires, π-périodiques.</div>
+<div class="b"><b>Formules (§5.2)</b> Arcs associés, addition, duplication, linéarisation et factorisation : voir <a href="#tr">Annexes</a>.</div>
+<div class="b e"><b>Réciproques</b><br>sin:[−π/2,π/2]→[−1,1], cos:[0,π]→[−1,1] (strictement décroissante) et tg:]−π/2,π/2[→ℝ sont continues et strictement monotones, donc admettent des réciproques : arcsin(x)=y⇔x=sin y (x∈[−1,1], y∈[−π/2,π/2]) ; arccos(x)=y⇔x=cos y (y∈[0,π]) ; arctg(x)=y⇔x=tg y (x∈ℝ, y∈]−π/2,π/2[). cos(arccos x)=x ; tg(arctg x)=x ; arctg(tg x) définie sur ℝ∖{π/2+πℤ}.<br>arcsin : [−1,1]→[−π/2,π/2], impaire, arcsin′=1/√(1−x²) sur ]−1,1[. sin(arcsin x)=x ; arcsin(sin x)=x sur [−π/2,π/2] (2π-périodique, impaire).<br>arccos : [−1,1]→[0,π], ni paire ni impaire, arccos′=−1/√(1−x²). arccos(cos x)=x sur [0,π] (2π-périodique, paire).<br>arctg : ℝ→]−π/2,π/2[, impaire, arctg′=1/(1+x²). arctg(tg x)=x sur ]−π/2,π/2[ (π-périodique, impaire).<br>Exercices : résoudre sur ℝ arcsin(sin x)=π/9 et sin(arcsin x)=π/9 ; montrer que ∀x∈[−1,1], arccos x+arcsin x=π/2 ; étudier la fonction x↦arctg x+arctg(1/x).</div></section>
 
 <section id="int"><h2>7 · Intégration</h2>
-<div class="b"><b>Primitive</b> F dérivable, F′=f. Toute fonction continue sur I en admet ; les primitives sont F+k. cos(ax+b) → sin(ax+b)/a ; sin(ax+b) → −cos(ax+b)/a ; (ax+b)ʳ → (ax+b)ʳ⁺¹/(a(r+1)).</div>
-<div class="b"><b>Intégrale</b> ∫ₐᵇf=[F]ₐᵇ=F(b)−F(a). Ex : ∫₀¹eˣdx=e−1 ; ∫₀^{π/4} sin x/cos²x dx=√2−1. Linéaire, croissante, Chasles ; ∫ₐᵃ=0 ; ∫ₐᵇ=−∫ᵦᵃ.</div>
-<div class="b"><b>Par parties</b> ∫ₐᵇUV′=[UV]ₐᵇ−∫ₐᵇU′V. Ex : ∫₁²ln x dx=2ln2−1 ; ∫₀¹xeˣdx=1 ; ∫₀¹x/√(1+x) dx=(4−2√2)/3.</div>
-<div class="b"><b>Changement de variable</b> φ de classe C¹ strictement monotone : ∫ₐᵇf(φ(t))φ′(t)dt=∫_{φ(a)}^{φ(b)}f(x)dx. Ex : x=sin t : ∫₀¹√(1−x²)dx=π/4.</div>
+<div class="b"><b>Primitive</b> F dérivable, F′=f. Toute fonction continue sur I en admet ; les primitives sont F+k. cos(ax+b) → sin(ax+b)/a ; sin(ax+b) → −cos(ax+b)/a ; (ax+b)ʳ → (ax+b)ʳ⁺¹/(a(r+1)) (a≠0, b∈ℝ, r∈ℚ ; + constante k).</div>
+<div class="b"><b>Intégrale</b> ∫ₐᵇf=[F]ₐᵇ=F(b)−F(a). Ex : ∫₀¹eˣdx=e−1 ; ∫₀^{π/4} sin x/cos²x dx=√2−1. Linéaire, croissante, Chasles ; ∫ₐᵃ=0 ; ∫ₐᵇ=−∫ᵦᵃ.<br>Ex : ∫₋₁²x e^{x²/2}dx=[e^{x²/2}]₋₁²=e²−e^{1/2} ; ∫₁²(√x−1/√x)dx=[⅔x^{3/2}]₁²−[2√x]₁²=(4−2^{3/2})/3.</div>
+<div class="b"><b>Par parties</b> ∫ₐᵇUV′=[UV]ₐᵇ−∫ₐᵇU′V. Ex : ∫₁²ln x dx=2ln2−1 ; ∫₀¹xeˣdx=1 ; ∫₀¹x/√(1+x) dx=[2x√(1+x)]₀¹−∫₀¹2√(1+x)dx=[2x√(1+x)]₀¹−[2·⅔(1+x)^{3/2}]₀¹=4/3−2√2/3. U,V continues sur [a,b] avec U′,V′ continues.</div>
+<div class="b"><b>Changement de variable</b> φ de classe C¹ strictement monotone : ∫ₐᵇf(φ(t))φ′(t)dt=∫_{φ(a)}^{φ(b)}f(x)dx. (f continue sur [φ(a),φ(b)]). Ex : I=∫₀¹√(1−x²)dx, x=φ(t)=sin t, φ:[0,π/2]→[0,1], dx=cos t dt : I=∫₀^{π/2}√(1−sin²t)cos t dt=∫₀^{π/2}cos²t dt=∫₀^{π/2}(1+cos2t)/2 dt=[t/2+sin(2t)/4]₀^{π/2}=π/4.</div>
 <p><b>Exercices</b> : ∫₀^{1/4}dx/√(1−2x) ; ∫₀^{π/2}cos³ ; ∫₀^{π/2}cos²x sin³x ; ∫₁²(1−√x)/(1+√x) ; ∫₀¹dx/(1+eˣ).</p>
 <h3>Intégrales impropres de 1ʳᵉ espèce</h3>
-<div class="b">Borne infinie : ∫ₐ^{+∞}f=lim_{b→+∞}∫ₐᵇf ; convergente si la limite est finie. ∫₁^{+∞}dt/t² converge (=1) ; ∫₁^{+∞}dt/t diverge. Linéarité si les deux convergent ; I et αI (α≠0) de même nature ; I converge et J diverge ⇒ I+J diverge. Fonction complexe : converge ⇔ Re et Im convergent.</div>
+<div class="b">Borne infinie : ∫ₐ^{+∞}f=lim_{b→+∞}∫ₐᵇf ; ∫_{−∞}^b f=lim_{a→−∞}∫ₐᵇf ; convergente si la limite existe et est finie, sinon divergente. I=lim_{x→+∞}[−1/t]₁ˣ=1. J=∫₁^{+∞}dt/t=lim[ln t]₁ˣ=+∞ : diverge. Si I et J divergent, on ne peut pas conclure sur I+J. Le même énoncé vaut sur ]−∞,b]. Linéarité si les deux convergent ; I et αI (α≠0) de même nature ; I converge et J diverge ⇒ I+J diverge. Fonction complexe : converge ⇔ Re et Im convergent.</div>
 <div class="b e"><b>Références</b> ∫₀^{+∞}e^{−αt}dt converge ⇔ α&gt;0. ∫ₐ^{+∞}dt/tᵅ (a&gt;0) converge ⇔ α&gt;1.</div>
-<div class="b"><b>Fonctions positives</b> Comparaison : 0≤f≤g ; ∫g converge ⇒ ∫f converge ; ∫f diverge ⇒ ∫g diverge. Riemann : si xᵅf(x)→l : α&gt;1 et l∈ℝ ⇒ converge ; α≤1 et l≠0 (même infinie) ⇒ diverge. Absolue convergence ⇒ convergence, |∫f|≤∫|f|.</div>
+<div class="b"><b>Fonctions positives</b> (si f est négative, −f est positive : on se ramène aux fonctions positives) Comparaison : 0≤f≤g ; ∫g converge ⇒ ∫f converge ; ∫f diverge ⇒ ∫g diverge. Riemann : si xᵅf(x)→l : α&gt;1 et l∈ℝ ⇒ converge ; α≤1 et l≠0 (même infinie) ⇒ diverge. Absolue convergence ⇒ convergence, |∫f|≤∫|f|.</div>
 <p><b>Exercices</b> : nature de ∫_{−∞}^{+∞}dx/(1+x²) ; ∫₀^{+∞}dt/(eᵗ+1) ; ∫₂^{+∞}dt/ln t ; ∫₁^{+∞}dx/((x+1)(x+2)) ; ∫₁^{+∞}e^{−t²}dt ; ∫₁^{+∞}ln t/(1+t²)dt ; ∫₁^{+∞}cos t/(1+t²)dt.</p></section>
 
 <section id="prim"><h2>8 · Primitives usuelles</h2>
@@ -109,22 +118,22 @@ table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid var(--ln);pad
 <tr><td>x^q (q∈ℝ∖{−1})</td><td>x^{q+1}/(q+1)</td><td>]0,+∞[</td></tr>
 <tr><td>u′uⁿ</td><td>uⁿ⁺¹/(n+1)</td><td>selon D_u</td></tr>
 <tr><td>u′/uⁿ (n≠1)</td><td>−1/((n−1)uⁿ⁻¹)</td><td>selon D_u</td></tr>
-<tr><td>1/x² ; u′/u²</td><td>−1/x ; −1/u</td><td>x≠0 ; u≠0</td></tr>
+<tr><td>1/x² ; u′/u²</td><td>−1/x ; −1/u</td><td>]−∞,0[ ou ]0,+∞[ ; {x∈D_u ; u(x)≠0}</td></tr>
 <tr><td>1/√x ; u′/√u</td><td>2√x ; 2√u</td><td>]0,+∞[</td></tr>
-<tr><td>1/x ; u′/u</td><td>ln|x| ; ln|u|</td><td>x≠0 ; u≠0</td></tr>
-<tr><td>eˣ ; aˣ ; u′e^u</td><td>eˣ ; aˣ/ln a ; e^u</td><td>ℝ</td></tr>
+<tr><td>1/x ; u′/u</td><td>ln|x| ; ln|u|</td><td>]−∞,0[ ou ]0,+∞[ ; {x∈D_u ; u(x)≠0}</td></tr>
+<tr><td>eˣ ; aˣ ; u′e^u</td><td>eˣ ; aˣ/ln a ; e^u</td><td>ℝ ; ℝ ; D_u</td></tr>
 <tr><td>sin x ; cos x</td><td>−cos x ; sin x</td><td>ℝ</td></tr>
-<tr><td>tan x ; cot x</td><td>−ln|cos x| ; ln|sin x|</td><td>où définies</td></tr>
+<tr><td>tan x ; cot x</td><td>−ln|cos x| ; ln|sin x|</td><td>]−π/2,π/2[+πℤ ; ]0,π[+πℤ</td></tr>
 <tr><td>sin²x ; cos²x</td><td>(2x−sin2x)/4 ; (2x+sin2x)/4</td><td>ℝ</td></tr>
-<tr><td>1/sin²x ; 1/cos²x</td><td>−cot x ; tan x</td><td>où définies</td></tr>
+<tr><td>1/sin²x ; 1/cos²x</td><td>−cot x ; tan x</td><td>]0,π[+πℤ ; ]−π/2,π/2[+πℤ</td></tr>
 <tr><td>sh x ; ch x ; th x</td><td>ch x ; sh x ; ln(ch x)</td><td>ℝ</td></tr>
-<tr><td>coth x ; 1/sh²x ; 1/ch²x</td><td>ln|sh x| ; −coth x ; th x</td><td>x≠0 ; x≠0 ; ℝ</td></tr>
-<tr><td>1/(a²−x²)</td><td>(1/2a)ln|(a+x)/(a−x)|</td><td>x≠±a</td></tr>
+<tr><td>coth x ; 1/sh²x ; 1/ch²x</td><td>ln|sh x| ; −coth x ; th x</td><td>]−∞,0[ ou ]0,+∞[ ; ]−∞,0[ ou ]0,+∞[ ; ℝ</td></tr>
+<tr><td>1/(a²−x²)</td><td>(1/2a)ln|(a+x)/(a−x)|</td><td>]−∞,−a[ ou ]−a,a[ ou ]a,+∞[</td></tr>
 <tr><td>1/(1+x²) ; 1/(a²+x²)</td><td>arctan x ; (1/a)arctan(x/a)</td><td>ℝ</td></tr>
-<tr><td>1/(x−a)ⁿ (n≠1) ; 1/(x−a)</td><td>−1/((n−1)(x−a)ⁿ⁻¹) ; ln|x−a|</td><td>x≠a</td></tr>
+<tr><td>1/(x−a)ⁿ (n≠1) ; 1/(x−a)</td><td>−1/((n−1)(x−a)ⁿ⁻¹) ; ln|x−a|</td><td>]a,+∞[ ; ]−∞,a[ ou ]a,+∞[</td></tr>
 <tr><td>1/√(a²−x²)</td><td>arcsin(x/a)</td><td>]−a,a[</td></tr>
-<tr><td>x/√(x²−1)</td><td>√(x²−1)</td><td>|x|&gt;1</td></tr>
-<tr><td>1/√(a²+x²) ; 1/√(x²−a²)</td><td>ln(x+√(a²+x²)) ; ln|x+√(x²−a²)|</td><td>ℝ ; |x|&gt;a</td></tr></table></div>
+<tr><td>x/√(x²−1)</td><td>√(x²−1)</td><td>]−∞,−1[ ou ]1,+∞[</td></tr>
+<tr><td>1/√(a²+x²) ; 1/√(x²−a²)</td><td>ln(x+√(a²+x²)) ; ln|x+√(x²−a²)|</td><td>ℝ ; ]−∞,−a[ ou ]a,+∞[</td></tr></table></div>
 <p><b>Complexes</b> (α∈ℂ∖ℝ, p∈ℤ∖{0,−1}) : e^{αx} → e^{αx}/α ; 1/(x−α) → ln|x−α|+i·arctan((x−Re α)/Im α) ; (x−α)ᵖ → (x−α)ᵖ⁺¹/(p+1).</p></section>
 
 <section id="tr"><h2>9 · Annexes</h2>
